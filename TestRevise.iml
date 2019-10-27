@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/OldExam2018" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/OldExam2019" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/OldExam2017" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/OldExam2011" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/OldExam2013" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/OldExam2014" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CodingBat" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/OldExam2015" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/OldExam2016" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/OldExam2015_V2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/OldExam2017_V2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/OldExam2018_V2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/OldExam2013_V2" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/annotations/17.0.0/annotations-17.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>
