@@ -1,0 +1,369 @@
+<html>
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Javanotes 7.0, Solution to Exercise 7, Chapter 4</title>
+    <link type="text/css" rel="stylesheet" href="../javanotes.css">
+</head>
+<body>
+<div align="right">
+    <small>
+        [ <a href="exercises.html">Exercises</a> |
+        <a href="index.html">Chapter Index</a> |
+        <a href="../index.html">Main Index</a> ]
+    </small>
+</div>
+<hr>
+<div class="content">
+    <h2>Solution for Programming Exercise 4.7</h2>
+    <hr class="break">
+    <p>
+        <span class="start"><big>T</big>his page contains</span> a sample solution to
+        one of the exercises from <a href="../index.html">Introduction to Programming Using Java</a>.</p>
+    <hr>
+    <h3 class="exercise">Exercise 4.7:</h3>
+    <p>Write a program that administers a basic addition quiz to the user.
+        There should be ten questions. Each question is a simple addition problem such as
+        <span class="code">17&nbsp;+&nbsp;42</span>, where the numbers in the problem are chosen at random
+        (and are not too big). The program should ask the user all ten questions and get
+        the user's answers. After asking all the questions, the user should print each question
+        again, with the user's answer. If the user got the answer right, the program should
+        say so; if not, the program should give the correct answer. At the end, tell the user
+        their score on the quiz, where each correct answer counts for ten points.</p>
+
+    <p>The program should use three subroutines, one to create the quiz, one to administer
+        the quiz, and one to grade the quiz. It can use three arrays, with three global variables of type
+        <span class="atype">int[]</span>, to refer to the arrays. The first array holds the first number from every
+        question, the second holds the second number from every questions, and the third holds
+        the user's answers.</p>
+
+    <hr>
+    <div class="exercisesubtitle" align="center">
+        <big><b>Discussion</b></big>
+    </div>
+    <hr>
+
+    <p>The statement of the problem has already made a lot of decisions for us. We are told
+        to use three global variables of type <span class="atype">int[]</span>. The variables must be <span
+                class="code">static</span>,
+        and I have chosen to make them <span class="code">private</span>, so the declarations become:
+    </p>
+
+    <pre>private static int[] firstNumbers;  // The first numbers in all ten questions.
+private static int[] secondNumbers; // The second numbers in all ten questions.
+private static int[] userAnswers;   // The user's answers to the ten questions.
+</pre>
+
+    <p>Note that these declarations are not in any subroutine. These statements only create variables, not
+        arrays. We still need to create three arrays of length 10. The arrays can be created using
+        the <span class="code">new</span> operator. This initialization could in fact be combined with the
+        declaration of the variables:</p>
+
+    <pre>private static int[] firstNumbers = new int[10];
+private static int[] secondNumbers = new int[10];
+private static int[] userAnswers = new int[10];</pre>
+
+    <p>Another possibility would be to create the three arrays at the beginning of the
+        <span class="code">main()</span> routine. In fact, I chose to create them in the subroutines where
+        they are first used.</p>
+
+    <p>The program has three stages -- create the problems, administer the quiz, and grade the
+        quiz -- and we are told to write a subroutine to do each stage. The main program simply
+        has to call the subroutines:</p>
+
+    <pre>public static void main(String[] args) {
+    createQuiz();
+    administerQuiz();
+    gradeQuiz();
+}</pre>
+
+    <p>(However, I added a couple of output statements at the start.)
+        This is an example of using subroutines to break up a large task into several simpler
+        subtasks, so that programming each subtask becomes a separate problem. The subroutines
+        are short and not too hard to write. Looking at <span class="code">administerQuiz()</span> as an example,
+        note that the user's answers have to be stored in the array, <span class="code">userAnswers</span>,
+        so that they can be used when grading the quiz. I create the array itself before asking
+        any questions, and then store the user's responses into the array as they are read
+        from the user. On the other hand, the arrays that hold the numbers that occur in the
+        questions have already been created and filled before <span class="code">administerQuiz()</span> is called.
+        Here's the subroutine:
+    </p>
+
+    <pre>private static void administerQuiz() {
+    userAnswers = new int[10];
+    for (int i = 0; i &lt; 10; i++) {
+        int questionNum = i + 1;
+        System.out.printf("Question %2d:  What is %2d + %2d  ? ",
+                      questionNum, firstNumbers[i], secondNumbers[i]);
+        userAnswers[i] = TextIO.getlnInt();
+    }
+}</pre>
+
+
+    <p>A couple notes about the output: I wanted to number the questions
+        1, 2, ..., 10, but the elements of the arrays are numbered 0, 1, ..., 9.
+        This means that the question number that I output has to be one more than the
+        array index. Also, all the numbers that occur in my program are either one or
+        two digits. By allowing exactly two digits for each number in the output, I can
+        get everything to line up neatly. Here's the I/O for a sample run of the
+        program:</p>
+
+    <pre>Welcome to the addition quiz!
+
+Question  1:  What is 40 + 14  ? 54
+Question  2:  What is 18 + 38  ? 46
+Question  3:  What is 21 + 31  ? 52
+Question  4:  What is 18 + 36  ? 54
+Question  5:  What is 43 + 12  ? 55
+Question  6:  What is 21 + 17  ? 38
+Question  7:  What is 33 + 25  ? 58
+Question  8:  What is 39 + 21  ? 70
+Question  9:  What is  1 + 25  ? 26
+Question 10:  What is 39 + 26  ? 65
+
+Here are the correct answers:
+   Question  1:  40 + 14  =  54.  You were CORRECT.
+   Question  2:  18 + 38  =  56.  You said 46, which is INCORRECT.
+   Question  3:  21 + 31  =  52.  You were CORRECT.
+   Question  4:  18 + 36  =  54.  You were CORRECT.
+   Question  5:  43 + 12  =  55.  You were CORRECT.
+   Question  6:  21 + 17  =  38.  You were CORRECT.
+   Question  7:  33 + 25  =  58.  You were CORRECT.
+   Question  8:  39 + 21  =  60.  You said 70, which is INCORRECT.
+   Question  9:   1 + 25  =  26.  You were CORRECT.
+   Question 10:  39 + 26  =  65.  You were CORRECT.
+
+You got 8 questions correct.
+Your grade on the quiz is 80</pre>
+
+    <hr class="break">
+
+    <p>I noted in <a href="../c4/s3.html#subroutines.3.6">Subsection&nbsp;4.3.8</a> that it's considered bad style to
+        use global
+        variables where parameters could be used instead, and that some people are quite hostile
+        to unnecessary global variables. You might ask, how bad was it to use global variables in
+        this case? To some extent this is a matter of opinion. You could argue that the whole
+        program revolves around the three arrays, so it makes sense for them to be global in the
+        program. On the other hand, it is possible to avoid using globals in this case.
+        The three array variables can be declared in <span class="code">main()</span> and the three arrays
+        can be created there and passed as parameters to the subroutines. Here is a main
+        routine that does that:
+    </p>
+
+    <pre>public static void main(String[] args) {
+    int[] firstNums = new int[10];  // The first numbers in the ten problems
+    int[] secondNums = new int[10]; // The second numbers in the ten problems
+    int[] answers = new int[10];    // The user's answers.
+    System.out.println();
+    System.out.println("Welcome to the addition quiz!");
+    System.out.println();
+    createQuiz(firstNums,secondNums);
+    administerQuiz(firstNums,secondNums,answers);
+    gradeQuiz(firstNums,secondNums,answers);
+}</pre>
+
+    <p>A complete second version of the program, with no global variables, is given below.
+        One reason that I asked you to use global variables is that understanding exactly how
+        arrays work as parameters requires an understanding of objects and how they are
+        passed as parameters. Without that understanding, it's hard to get the global-less
+        version correct. You will learn about passing objects as parameters in the
+        next chapter.</p>
+
+    <hr>
+    <div class="exercisesubtitle" align="center">
+        <big><b>The Solution</b></big>
+    </div>
+    <hr>
+
+    <pre class="exercisecode">
+
+<b>Here is the original program, using global variables:</b>
+
+
+/**
+ * This program administers a ten-question addition quiz to the user.  The numbers
+ * for the problem are chosen at random.  The numbers and the answers are one or
+ * two digits.  After asking the user the ten questions, the computer grades the
+ * quiz, telling the user the correct answer for any problem they got wrong.
+ */
+public class AdditionQuiz {
+    
+    private static int[] firstNumbers;  // The first numbers in all ten questions.
+    private static int[] secondNumbers; // The second numbers in all ten questions.
+    private static int[] userAnswers;   // The user's answers to the ten questions.
+    
+    
+    public static void main(String[] args) {
+        System.out.println();
+        System.out.println("Welcome to the addition quiz!");
+        System.out.println();
+        createQuiz();
+        administerQuiz();
+        gradeQuiz();
+    }
+    
+    
+    /**
+     * Creates the arrays that hold the numbers for the questions and fills
+     * them with random numbers.  
+     */
+    private static void createQuiz() {
+        firstNumbers = new int[10];
+        secondNumbers = new int[10];
+        for ( int i = 0; i &lt; 10; i++ ) {
+            firstNumbers[i] = (int)(Math.random() * 50 + 1);  // in the range 1 to 50
+            secondNumbers[i] = (int)(Math.random() * 50); // in the range 0 to 49
+        }
+    }
+    
+    
+    /**
+     * Asks the user each of the ten quiz questions and gets the user's answers.
+     * The answers are stored in an array, which is created in this subroutine.
+     */
+    private static void administerQuiz() {
+        userAnswers = new int[10];
+        for (int i = 0; i &lt; 10; i++) {
+            int questionNum = i + 1;
+            System.out.printf("Question %2d:  What is %2d + %2d  ? ",
+                          questionNum, firstNumbers[i], secondNumbers[i]);
+            userAnswers[i] = TextIO.getlnInt();
+        }
+    }
+    
+    
+    /**
+     * Shows all the questions, with their correct answers, and computes a grade
+     * for the quiz.  For each question, the user is told whether they got
+     * it right.
+     */
+    private static void gradeQuiz() {
+        System.out.println();
+        System.out.println("Here are the correct answers:");
+        int numberCorrect = 0;
+        int grade;
+        for (int i = 0; i &lt; 10; i++) {
+            int questionNum = i + 1;
+            int correctAnswer = firstNumbers[i] + secondNumbers[i];
+            System.out.printf("   Question %2d:  %2d + %2d  =  %2d.  ",
+                questionNum, firstNumbers[i], secondNumbers[i], correctAnswer);
+            if ( userAnswers[i] == correctAnswer ) {
+                System.out.println("You were CORRECT.");
+                numberCorrect++;
+            }
+            else {
+                System.out.println("You said " + userAnswers[i] + ", which is INCORRECT.");
+            }
+        }
+        grade = numberCorrect * 10;
+        System.out.println();
+        System.out.println("You got " + numberCorrect + " questions correct.");
+        System.out.println("Your grade on the quiz is " + grade);
+        System.out.println();
+    }
+
+} // end class AdditionQuiz
+
+
+<b>Here is a version that uses parameters and no global variables:</b>
+
+
+/**
+ * This program administers a ten-question addition quiz to the user.  The numbers
+ * for the problem are chosen at random.  The numbers and the answers are one or
+ * two digits.  After asking the user the ten questions, the computer grades the
+ * quiz, telling the user the correct answer for any problem they got wrong.
+ */
+public class AdditionQuizNoGlobals {
+        
+    
+    public static void main(String[] args) {
+        int[] firstNums = new int[10];  // The first numbers in the ten problems
+        int[] secondNums = new int[10]; // The second numbers in the ten problems
+        int[] answers = new int[10];    // The user's answers.
+        System.out.println();
+        System.out.println("Welcome to the addition quiz!");
+        System.out.println();
+        createQuiz(firstNums,secondNums);
+        administerQuiz(firstNums,secondNums,answers);
+        gradeQuiz(firstNums,secondNums,answers);
+    }
+    
+    
+    /**
+     * Creates the arrays that hold the numbers for the questions and fills
+     * them with random numbers.  The parameters are arrays that will hold
+     * the random numbers for the first and second operands of each addition
+     * problem.  The arrays must have already been created when this subroutine
+     * is called!
+     */
+    private static void createQuiz(int[] firstNumbers, int[] secondNumbers) {
+        for ( int i = 0; i &lt; 10; i++ ) {
+            firstNumbers[i] = (int)(Math.random() * 50 + 1);  // in the range 1 to 50
+            secondNumbers[i] = (int)(Math.random() * 50); // in the range 0 to 49
+        }
+    }
+    
+    
+    /**
+     * Asks the user each of the ten quiz questions and gets the user's answers.
+     * The answers are stored in an array, which is created in this subroutine.
+     * The first two parameters hold the operands for the quiz questions.  The user's
+     * answers to the ten problems will be stored in the third array.
+     */
+    private static void administerQuiz(int[] firstNumbers, int[] secondNumbers, int[] userAnswers) {
+        for (int i = 0; i &lt; 10; i++) {
+            int questionNum = i + 1;
+            System.out.printf("Question %2d:  What is %2d + %2d  ? ",
+                          questionNum, firstNumbers[i], secondNumbers[i]);
+            userAnswers[i] = TextIO.getlnInt();
+        }
+    }
+    
+    
+    /**
+     * Shows all the questions, with their correct answers, and computes a grade
+     * for the quiz.  For each question, the user is told whether they got
+     * it right.  The first two parameters hold the operands for the quiz questions,
+     * and the third parameter holds the answers that the user gave to the quiz.
+     */
+    private static void gradeQuiz(int[] firstNumbers, int[] secondNumbers, int[] userAnswers) {
+        System.out.println();
+        System.out.println("Here are the correct answers:");
+        int numberCorrect = 0;
+        int grade;
+        for (int i = 0; i &lt; 10; i++) {
+            int questionNum = i + 1;
+            int correctAnswer = firstNumbers[i] + secondNumbers[i];
+            System.out.printf("   Question %2d:  %2d + %2d  =  %2d.  ",
+                questionNum, firstNumbers[i], secondNumbers[i], correctAnswer);
+            if ( userAnswers[i] == correctAnswer ) {
+                System.out.println("You were CORRECT.");
+                numberCorrect++;
+            }
+            else {
+                System.out.println("You said " + userAnswers[i] + ", which is INCORRECT.");
+            }
+        }
+        grade = numberCorrect * 10;
+        System.out.println();
+        System.out.println("You got " + numberCorrect + " questions correct.");
+        System.out.println("Your grade on the quiz is " + grade);
+        System.out.println();
+    }
+
+}  // end class AdditionQuizNoGlobals
+
+
+</pre>
+
+</div>
+<hr>
+<div align="right">
+    <small>
+        [ <a href="exercises.html">Exercises</a> |
+        <a href="index.html">Chapter Index</a> |
+        <a href="../index.html">Main Index</a> ]
+    </small>
+</div>
+</body>
+</html>

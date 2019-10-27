@@ -1,0 +1,101 @@
+﻿Overview of all exams with their exercises
+Exam
+Exercises
+Keywords
+Jan2013
+Statistics
+Sum of array, average/mean of array, largest to first place
+
+Humor
+Class joke, constructor, total time, subcategory, insulting joke, funniness of joke 
+
+Reversal
+Recursive, reverse word
+Jan2015
+Miscellaneous
+Theory, method, local variable, for n times, number of objects
+
+Circular Primes
+Prime, power of 10/ten, circular prime, compute all primes
+
+Seven Search
+Recursive, sorted ascending, contains 7
+
+Humor
+Class joke, constructor, total space, subcategory, insulting joke, funniness of joke 
+Jan2017
+Miscellaneous
+Theory, method, segsum, segsumRobust, local variable
+
+Upside down
+Recursive, reverse word, palindrome, reverse text
+
+Monsters
+Objects, add monsters (eyes, bouncing, moving)
+Jan2018
+Statistics
+Sum of array, average/mean of array, largest to first place
+
+Palindrome
+Recursive, reverse word, Boolean palindrome
+
+Humor
+Class joke, constructor, total time, subcategory, insulting joke, funniness of joke 
+
+Ballroom
+Ball that falls down, objects, add other balls (red, blinking)
+Nov2011
+Skating
+Class Skater, constructor, times, lap time, lap number, fastest lap, flat, pre- and postconditions
+
+Animal farm
+Class animal, average daily food intake, gender, year of birth, class Stable contains animals, add and remove animals, manger
+Nov2013
+Stars
+Print rectangle with stars, (non-)filled, horizontal bar chart
+
+Differentiation
+All zero, difference array, is constant, linear, quadratic, degree
+
+Monster Mania
+Objects, add monsters (eyes, bouncing, moving)
+Nov2014
+Miscellaneous
+Theory, sum positive array, what will it return, what is wrong with code, local variables
+
+Sevens
+Return last digit of n, remove last digit, return number of 7s it contains, recursive, remove all 7s from integer
+
+Ballroom
+Ball that falls down, objects, add other balls (red, blinking), bouncing ballroom, change direction
+Nov2015
+Miscellaneous
+What returns, wrong with code, repair, local variables
+
+Make a difference
+All zero, difference array, is constant, linear, quadratic, make linear function, degree
+
+University
+Buidling, room, employee, user, override, student, professor, move user, has lecturer, theory
+Nov2016
+Miscellaneous
+Theory, instance, instance variable, print after NullPointerException, wrong with code, number of objects
+
+Getting Digital
+Recursive, sum of digits, reverse digits
+
+Soccer
+GUI, BlueBall, react to kicking, Dotted, Chameleon, interface Undoable, kickback, implement, add button
+Nov2017
+Miscellaneous
+Theory, one method, local variable, method, return, wrong with code, recursive incomplete code, solve it
+
+Kaprekar
+Kaprekar, add zeros, return next number, produce output
+
+Music
+Class Piece, title and artist, constructor, text representation, song, arraylist to store the objects, method
+
+Colors
+Rectangle turns yellow when clicked, back to original color when clicked
+

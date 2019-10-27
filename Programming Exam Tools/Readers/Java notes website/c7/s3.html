@@ -1,0 +1,732 @@
+<html>
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Javanotes 7.0, Section 7.3 -- ArrayList</title>
+    <link type="text/css" rel="stylesheet" href="../javanotes.css">
+</head>
+<body>
+<div align="right">
+    <small>
+        [ <a href="s2.html">Previous Section</a> |
+        <a href="s4.html">Next Section</a> |
+        <a href="index.html">Chapter Index</a> |
+        <a href="../index.html">Main Index</a> ]
+    </small>
+</div>
+<hr>
+<table class="subsections" vspace="8" hspace="8" cellpadding="5" border="2" align="right">
+    <tr>
+        <td>
+            <div align="center">
+                <b>Subsections</b>
+                <hr>
+                <small><a href="#arrays.3.1">ArrayList and Parameterized Types</a>
+                    <br>
+                    <a href="#arrays.3.2">Wrapper Classes</a>
+                    <br>
+                    <a href="#arrays.3.3">Programming With ArrayList</a>
+                    <br>
+                    <a href="#arrays.3.4">Vectors</a>
+                    <br>
+                </small>
+            </div>
+        </td>
+    </tr>
+</table>
+<div class="content">
+    <h3 class="section_title">Section 7.3</h3>
+    <h2 class="section_title">ArrayList</h2>
+    <hr class="break">
+
+
+    <p>
+        <span class="start"><big>A</big>s we have just seen</span> in <a href="../c7/s2.html#arrays.2.4">Subsection&nbsp;7.2.4</a>,
+        we can easily encode the dynamic array pattern into a class, but it looks like
+        we need a different class for each data type. In fact, Java has a feature called
+        "parameterized types" that makes it possible to avoid the multitude of classes, and
+        Java has a single class named <span class="classname">ArrayList</span> that implements the
+        dynamic array pattern for all data types.</p>
+
+
+    <hr class="break">
+    <h3 class="subsection_title">
+        <a name="arrays.3.1">7.3.1&nbsp;&nbsp;ArrayList and Parameterized Types</a>
+    </h3>
+
+
+    <p>Java has a standard type <span class="atype">ArrayList&lt;String&gt;</span> that represents
+        dynamic arrays of <span class="classname">Strings</span>. Similarly, there is a type <span class="atype">ArrayList&lt;JButton&gt;</span>
+        that can be used to represent dynamic arrays of <span class="classname">JButtons</span>. And if
+        <span class="classname">Player</span> is a class representing players in a game, then
+        the type <span class="atype">ArrayList&lt;Player&gt;</span> can be used to represent a dynamic
+        array of <span class="classname">Players</span>.</p>
+
+
+    <p>It might look like we still have a multitude of classes here, but in fact there
+        is only one class, the <span class="classname">ArrayList</span> class, defined in the package
+        <span class="code">java.util</span>. But <span class="classname">ArrayList</span> is a
+        <span class="newword">parameterized type</span>. A parameterized type can take a type
+        parameter, so that from the single class <span class="classname">ArrayList</span>,
+        we get a multitude of types including <span class="atype">ArrayList&lt;String&gt;</span>,
+        <span class="atype">ArrayList&lt;JButton&gt;</span>, and in fact <span class="atype">ArrayList&lt;T&gt;</span>
+        for any object type <span class="classname">T</span>. The type parameter <span class="classname">T</span>
+        must be an object type such as a class name or an interface name. It cannot be
+        a primitive type. This means that, unfortunately, you can not have an ArrayList of
+        <span class="ptype">int</span> or an ArrayList of <span class="ptype">char</span>.</p>
+
+
+    <p>Consider the type <span class="atype">ArrayList&lt;String&gt;</span>. As a type, it can
+        be used to declare variables, such as</p>
+
+
+    <pre>ArrayList&lt;String&gt; namelist;</pre>
+
+
+    <p>It can also be used as the type of a formal parameter in a subroutine definition,
+        or as the return type of a subroutine. It can be used with the <span class="code">new</span>
+        operator to create objects:</p>
+
+
+    <pre>namelist = new ArrayList&lt;String&gt;();</pre>
+
+
+    <p>The object created in this way is of type <span class="atype">ArrayList&lt;String&gt;</span> and
+        represents a dynamic list of strings. It has instance methods such as
+        <span class="code">namelist.add(str)</span> for adding a <span class="classname">String</span> to the list,
+        <span class="code">namelist.get(i)</span> for getting the string at index <span class="code">i</span>,
+        and <span class="code">namelist.size()</span> for getting the number of items currently in the list.</p>
+
+
+    <p>But we can also use <span class="classname">ArrayList</span> with other types.
+        If <span class="classname">Player</span> is a class representing players in a game, we can
+        create a list of players with</p>
+
+
+    <pre>ArrayList&lt;Player&gt; playerList = new ArrayList&lt;Player&gt;();</pre>
+
+
+    <p>Then to add a player, <span class="code">plr</span>, to the game, we just have to say
+        <span class="code">playerList.add(plr)</span>. And we can remove player number <span class="code">k</span>
+        with <span class="code">playerList.remove(k)</span>.</p>
+
+
+    <p>When you use a type such as <span class="atype">ArrayList&lt;T&gt;</span>, the compiler will
+        ensure that only objects of type <span class="classname">T</span> can be added to the list.
+        An attempt to add an object that is not of type <span class="classname">T</span> will be
+        a syntax error, and the program will not compile. However, note that objects
+        belonging to a subclass of <span class="classname">T</span> can be added to the list, since
+        objects belonging to a subclass of <span class="classname">T</span> are still considered to
+        be of type <span class="classname">T</span>. Thus, for example, a variable of type
+        <span class="atype">ArrayList&lt;JComponent&gt;</span> can be used to hold objects of type
+        <span class="classname">JButton</span>, <span class="classname">JPanel</span>, <span class="classname">JTextField</span>,
+        or any other subclass of <span class="classname">JComponent</span>.
+        (Of course, this is the same way arrays work: An object of type <span class="atype">T[]</span>
+        can hold objects belonging to any subclass of <span class="classname">T</span>.)
+        Similarly, if <span class="classname">T</span> is an interface, then any object that
+        implements interface <span class="classname">T</span> can be added to the list.</p>
+
+
+    <p>An object of type <span class="atype">ArrayList&lt;T&gt;</span> has all of the instance methods
+        that you would expect in a dynamic array implementation. Here are some of the most
+        useful. Suppose that <span class="code">list</span> is a variable of type <span
+                class="atype">ArrayList&lt;T&gt;</span>.
+        Then we have:</p>
+
+
+    <ul>
+
+        <li>
+            <span class="codedef">list.size()</span> -- This function returns
+            the current size of the list, that is, the number of items currently in the list.
+            The only valid positions in the
+            list are numbers in the range <span class="code">0</span> to <span class="code">list.size()-1</span>. Note
+            that
+            the size can be zero. A call to the default constructor <span
+                class="code">new&nbsp;ArrayList&lt;T&gt;()</span>
+            creates a list of size zero.
+        </li>
+
+        <li>
+            <span class="codedef">list.add(obj)</span> -- Adds an object onto
+            the end of the list, increasing the size by&nbsp;1. The parameter,
+            <span class="code">obj</span>, can refer to an object of type <span class="classname">T</span>,
+            or it can be <span class="code">null</span>.
+        </li>
+
+        <li>
+            <span class="codedef">list.get(N)</span> -- This function returns
+            the value stored at position <span class="code">N</span> in the list. The return type of
+            this function is&nbsp;<span class="classname">T</span>. <span class="code">N</span>
+            must be an integer in the range <span class="code">0</span> to <span class="code">list.size()-1</span>. If
+            <span class="code">N</span> is outside this range, an error of type <span class="classname">IndexOutOfBoundsException</span>
+            occurs. Calling this function is
+            similar to referring to <span class="code">A[N]</span> for an array, <span class="code">A</span>, except
+            that you
+            can't use <span class="code">list.get(N)</span> on the left side of an assignment statement.
+        </li>
+
+        <li>
+            <span class="codedef">list.set(N, obj)</span> -- Assigns the
+            object, <span class="code">obj</span>, to position <span class="code">N</span> in the <span
+                class="classname">ArrayList</span>,
+            replacing the item previously stored at position <span class="code">N</span>. The parameter <span
+                class="code">obj</span>
+            must be of type <span class="classname">T</span>. The integer
+            <span class="code">N</span> must be in the range from <span class="code">0</span> to <span class="code">list.size()-1</span>.
+            A
+            call to this function is equivalent to the command <span class="code">A[N]&nbsp;=&nbsp;obj</span> for an
+            array&nbsp;<span class="code">A</span>.
+        </li>
+
+        <li>
+            <span class="codedef">list.remove(N)</span> -- For an integer,
+            <span class="code">N</span>, this removes the <span class="code">N-th</span> item in the <span
+                class="classname">ArrayList</span>.
+            <span class="code">N</span> must be in the range <span class="code">0</span> to <span class="code">list.size()-1</span>.
+            Any items
+            in the list that come after the removed item are moved down one position. The
+            size of the list decreases by 1.
+        </li>
+
+        <li>
+            <span class="codedef">list.remove(obj)</span> -- If the specified
+            object occurs somewhere in the list, it is removed from the list.
+            Any items in the list that come after the removed item are moved down one
+            position. The size of the <span class="classname">ArrayList</span> decreases by 1. If <span
+                class="code">obj</span>
+            occurs more than once in the list, only the first copy is removed.
+        </li>
+
+        <li>
+            <span class="codedef">list.indexOf(obj)</span> -- A function that
+            searches for the object, <span class="code">obj</span>, in the list. If the object
+            is found in the list, then the position number where it is found is returned.
+            If the object is not found, then <span class="code">-1</span> is returned.
+        </li>
+
+    </ul>
+
+
+    <p>For the last two methods listed here, <span class="code">obj</span> is compared to
+        an item in the list by calling <span class="code">obj.equals(item)</span>, unless <span class="code">obj</span>
+        is null. This means, for example, that strings are tested for equality by checking
+        the contents of the strings, not their location in memory.</p>
+
+
+    <p>Java comes with several parameterized classes representing different data structures.
+        Those classes make up the <span class="newword">Java Collection Framework</span>. Here we consider
+        only <span class="classname">ArrayList</span>, but we will return to this important topic in
+        much more detail in <a href="../c10/index.html">Chapter&nbsp;10</a>.</p>
+
+
+    <p>By the way, <span class="classname">ArrayList</span> can also be used as a non-parametrized
+        type. This means that you can declare variables and create objects of type <span
+                class="classname">ArrayList</span>
+        such as</p>
+
+
+    <pre>ArrayList list = new ArrayList();</pre>
+
+
+    <p>The effect of this is similar to declaring <span class="code">list</span> to be of type
+        <span class="atype">ArrayList&lt;Object&gt;</span>. That is, <span class="code">list</span> can hold
+        any object that belongs to a subclass of <span class="classname">Object</span>. Since every
+        class is a subclass of <span class="classname">Object</span>, this means that <b>any</b>
+        object can be stored in <span class="code">list</span>.</p>
+
+
+    <hr class="break">
+    <h3 class="subsection_title">
+        <a name="arrays.3.2">7.3.2&nbsp;&nbsp;Wrapper Classes</a>
+    </h3>
+
+
+    <p>As I have already noted, parameterized types don't work with the primitive types.
+        There is no such thing as "<span class="atype">ArrayList&lt;int&gt;</span>". However, this limitation
+        turns out not to be very limiting after all, because of the so-called
+        <span class="newword">wrapper classes</span> such as <span class="classname">Integer</span>
+        and <span class="classname">Character</span>.</p>
+
+
+    <p>We have already briefly encountered the classes <span class="classname">Double</span> and
+        <span class="classname">Integer</span> in <a href="../c2/s5.html">Section&nbsp;2.5</a>. These classes
+        contain the <span class="code">static</span> methods <span class="code">Double.parseDouble</span>
+        and <span class="code">Integer.parseInteger</span> that are used to convert strings to
+        numerical values, and constants such as <span class="code">Integer.MAX_VALUE</span> and <span class="code">Double.NaN</span>.
+        We have also encountered the <span class="classname">Character</span>
+        class in some examples, with the static method <span class="code">Character.isLetter</span>,
+        that can be used to test whether a given value of type <span class="code">char</span> is a
+        letter. There is a similar class for each of the other primitive types,
+        <span class="classname">Long</span>, <span class="classname">Short</span>, <span class="classname">Byte</span>,
+        <span class="classname">Float</span>, and <span class="classname">Boolean</span>.
+        These classes are wrapper classes. Although they
+        contain useful <span class="code">static</span> members, they have another use as
+        well: They are used for creating objects that represent primitive type
+        values.</p>
+
+
+    <p>Remember that the primitive types are not classes, and values of primitive type
+        are not objects. However, sometimes it's useful to treat a primitive value
+        as if it were an object. This is true, for example, when you would like to store
+        primitive type values in an <span class="classname">ArrayList</span>.
+        You can't do that literally, but you can "wrap" the
+        primitive type value in an object belonging to one of the wrapper classes.</p>
+
+
+    <p>For example, an object of type <span class="classname">Double</span> contains a single instance
+        variable, of type <span class="ptype">double</span>. The object is a "wrapper"
+        for the <span class="ptype">double</span> value.
+        You can create an object that
+        wraps the <span class="ptype">double</span> value <span class="code">6.0221415e23</span> with</p>
+
+
+    <pre>Double d = new Double(6.0221415e23);</pre>
+
+
+    <p>The value of <span class="code">d</span> contains the same information as the value of type
+        <span class="ptype">double</span>, but it is an object. If you want to retrieve the <span
+                class="ptype">double</span>
+        value that is wrapped in the object, you can call the function <span class="code">d.doubleValue()</span>.
+        Similarly, you can wrap an <span class="ptype">int</span>
+        in an object of type <span class="classname">Integer</span>, a <span class="ptype">boolean</span> value
+        in an object of type <span class="classname">Boolean</span>, and so on.</p>
+
+
+    <p>Furthermore, to make these classes even easier to use, there is automatic
+        conversion between a primitive type and the corresponding wrapper class. For example,
+        if you use a value of type <span class="ptype">int</span> in a context that requires an object
+        of type <span class="classname">Integer</span>, the <span class="ptype">int</span> will automatically be
+        wrapped in an <span class="classname">Integer</span> object. If you say</p>
+
+
+    <pre>Integer answer = 42;</pre>
+
+
+    <p>and the computer will silently read this as if it were</p>
+
+
+    <pre>Integer answer = new Integer(42);</pre>
+
+
+    <p>This is called <span class="newword">autoboxing</span>. It works in the other direction, too. For example, if
+        <span class="code">d</span> refers to an object of type <span class="code">Double</span>, you can use <span
+                class="code">d</span>
+        in a numerical expression such as <span class="code">2*d</span>. The <span class="ptype">double</span> value
+        inside
+        <span class="code">d</span> is automatically <span class="newword">unboxed</span> and multiplied by&nbsp;2.
+        Autoboxing
+        and unboxing also apply to subroutine calls. For example, you can pass an actual parameter of type
+        <span class="ptype">int</span> to a subroutine that has a formal parameter of type <span class="classname">Integer</span>.
+        In fact, autoboxing and unboxing make it possible in many circumstances to ignore the difference
+        between primitive types and objects.</p>
+
+
+    <p>This is true in particular for parameterized types. Although there is no such thing
+        as "<span class="atype">ArrayList&lt;int&gt;</span>", there is <span
+                class="atype">ArrayList&lt;Integer&gt;</span>.
+        An <span class="atype">ArrayList&lt;Integer&gt;</span> holds objects of type <span
+                class="classname">Integer</span>,
+        but any object of type <span class="classname">Integer</span> really just represents an <span
+                class="ptype">int</span>
+        value in a rather thin wrapper. Suppose that we have an object of type
+        <span class="atype">ArrayList&lt;Integer&gt;</span>:</p>
+
+
+    <pre>ArrayList&lt;Integer&gt; integerList;
+integerList = new ArrayList&lt;Integer&gt;();</pre>
+
+
+    <p>Then we can, for example, add an object to <span class="code">integerList</span> that represents the number 42:
+    </p>
+
+
+    <pre>integerList.add( new Integer(42) );</pre>
+
+
+    <p>but because of autoboxing, we can actually say</p>
+
+
+    <pre>integerList.add( 42 );</pre>
+
+
+    <p>and the compiler will automatically wrap 42 in an object of type <span class="classname">Integer</span>
+        before adding it to the list. Similarly, we can say</p>
+
+
+    <pre>int num = integerList.get(3);</pre>
+
+
+    <p>The value returned by <span class="code">integerList.get(3)</span> is of type <span
+            class="classname">Integer</span>
+        but because of unboxing, the compiler will automatically convert the return value into an
+        <span class="ptype">int</span>, as if we had said</p>
+
+
+    <pre>int num = integerList.get(3)<span class="newcode">.intValue()</span>;</pre>
+
+
+    <p>So, in effect, we can pretty much use <span class="code">integerList</span> as if it were
+        a dynamic array of <span class="ptype">int</span> rather than a dynamic array of <span
+                class="classname">Integer</span>.
+        Of course, a similar statement holds for lists of other wrapper classes such as
+        <span class="atype">ArrayList&lt;Double&gt;</span> and <span class="atype">ArrayList&lt;Character&gt;</span>.
+        (There is one issue that sometimes causes problems: A list can hold <span class="code">null</span>
+        values, and a <span class="code">null</span> does not correspond to any primitive type value. This
+        means, for example, that the statement "<span class="code">int num = integerList.get(3);</span>"
+        can produce a null pointer exception in the case where <span class="code">integerList.get(3)</span>
+        returns <span class="code">null</span>. Unless you are sure that all the values in your list are
+        non-null, you need to take this possibility into account.)
+    </p>
+
+
+    <hr class="break">
+    <h3 class="subsection_title">
+        <a name="arrays.3.3">7.3.3&nbsp;&nbsp;Programming With ArrayList</a>
+    </h3>
+
+
+    <p>As a simple first example, we can redo <span class="sourceref"><a
+            href="../source/chapter7/ReverseWithDynamicArray.java">ReverseWithDynamicArray.java</a></span>,
+        from the <a href="../c7/s2.html#arrays.2.4">previous section</a>, using an
+        ArrayList instead of a custom dynamic array class. In this case, we want
+        to store integers in the list, so we should use <span class="atype">ArrayList&lt;Integer&gt;</span>.
+        Here is the complete program:</p>
+
+
+    <pre>import java.util.ArrayList;
+
+/**
+ * Reads a list of non-zero numbers from the user, then prints
+ * out the input numbers in the reverse of the order in which
+ * the were entered.  There is no limit on the number of inputs.
+ */
+public class ReverseWithArrayList {
+    
+    public static void main(String[] args) {
+        <span class="newcode">ArrayList&lt;Integer&gt; list;
+        list = new ArrayList&lt;Integer&gt;();</span>
+        System.out.println("Enter some non-zero integers.  Enter 0 to end.");
+        while (true) {
+            System.out.print("? ");
+            int number = TextIO.getlnInt();
+            if (number == 0)
+                break;
+            <span class="newcode">list.add(number);</span>
+        }
+        System.out.println();
+        System.out.println("Your numbers in reverse are:");
+        for (int i = <span class="newcode">list.size()</span> - 1; i &gt;= 0; i--) {
+            System.out.printf("%10d%n", <span class="newcode">list.get(i)</span>);
+        }
+    }
+
+}</pre>
+
+
+    <p>As illustrated in this example, ArrayLists are commonly processed using
+        <span class="code">for</span> loops, in much the same way that arrays are processed.
+        for example, the following loop prints out all the items for a variable <span class="code">namelist</span> of
+        type
+        <span class="atype">ArrayList&lt;String&gt;</span>:</p>
+
+
+    <pre>for ( int i = 0; i &lt; namelist.size(); i++ ) {
+    String item = namelist.get(i);
+    System.out.println(item);
+}</pre>
+
+
+    <p>You can also use for-each loops with ArrayLists, so this example could also be written</p>
+
+
+    <pre>for ( String item : namelist ) {
+    System.out.println(item);
+}</pre>
+
+
+    <p>When working with wrapper classes, the loop control variable in the for-each loop
+        can be a primitive type variable. This works because of unboxing. For example,
+        if <span class="code">numbers</span> is of type <span class="atype">ArrayList&lt;Double&gt;</span>, then
+        the following loop can be used to add up all the values in the list:</p>
+
+
+    <pre>double sum = 0;
+for ( double num : numbers ) {
+   sum = sum + num;
+}</pre>
+
+
+    <p>This will work as long as none of the items in the list are <span class="code">null</span>.
+        If there is a possibility of null values, then you will want to use a loop control
+        variable of type <span class="classname">Double</span> and test for nulls. For example,
+        to add up all the non-null values in the list:</p>
+
+
+    <pre>double sum;
+for ( Double num : numbers ) {
+    if ( num != null ) {
+        sum = sum + num;  // Here, num is SAFELY unboxed to get a double.
+    }
+}</pre>
+
+
+    <hr class="break">
+
+
+    <p>For a more complete and useful example, we will look at the program
+        <span class="sourceref"><a href="../source/chapter7/SimplePaint2.java">SimplePaint2.java</a></span>. This is a
+        much improved version of
+        <span class="sourceref"><a href="../source/chapter6/SimplePaint.java">SimplePaint.java</a></span> from <a
+                href="../c6/s3.html#GUI1.4.4">Subsection&nbsp;6.3.4</a>.
+        In the new program, the user can sketch curves in a drawing area
+        by clicking and dragging with the mouse. The curves can be of any color, and
+        the user can select the drawing color using a menu. The background color of the
+        drawing area can also be selected using a menu. And there is a "Control"
+        menu that contains several commands: An "Undo" command, which removes the
+        most recently drawn curve from the screen, a "Clear" command that removes
+        all the curves, and a "Use Symmetry" checkbox that turns a symmetry feature
+        on and off. Curves that are drawn by the user when the symmetry option is on
+        are reflected horizontally and vertically to produce a symmetric pattern.
+        (Symmetry is there just to look pretty.)</p>
+
+
+    <p>Unlike the original SimplePaint program, this new version
+        uses a data structure to store information about the picture that has been
+        drawn by the user.
+        This data is used in the <span class="code">paintComponent()</span> method
+        to redraw the picture whenever necessary. The data
+        structure is implemented using <span class="classname">ArrayLists</span>.</p>
+
+
+    <p>The main data for a curve consists of a list of the points on the curve. This
+        data can be stored in an object of type <span class="atype">ArrayList&lt;Point&gt;</span>,
+        where <span class="code">java.awt.Point</span> is one of Java's standard classes.
+        (A <span class="classname">Point</span> object contains two public integer variables
+        <span class="code">x</span> and <span class="code">y</span> that represent the pixel coordinates of a
+        point.) However, to redraw the curve, we also need to know its color,
+        and we need to know whether the symmetry option should be applied to the curve.
+        All the data that is needed to redraw the curve can be grouped into
+        an object of type <span class="classname">CurveData</span> that is defined as</p>
+
+
+    <pre>private static class CurveData {
+   Color color;  // The color of the curve.
+   boolean symmetric;  // Are horizontal and vertical reflections also drawn?
+   ArrayList&lt;Point&gt; points;  // The points on the curve.
+}</pre>
+
+
+    <p>However, a picture can contain many curves, not just one, so to store
+        all the data necessary to redraw the entire picture, we need a <b>list</b>
+        of objects of type <span class="classname">CurveData</span>. For this list,
+        we can use a variable <span class="code">curves</span> declared as</p>
+
+
+    <pre>ArrayList&lt;CurveData&gt; curves = new ArrayList&lt;CurveData&gt;();</pre>
+
+
+    <p>Here we have a list of objects, where each object contains a list of
+        points as part of its data! Let's look at a few examples of processing
+        this data structure. When the user clicks the mouse on the drawing surface,
+        it's the start of a new curve, and a new <span class="classname">CurveData</span>
+        object must be created and added to the list of curves. The instance
+        variables in the new <span class="classname">CurveData</span> object must
+        also be initialized. Here is the code from the <span class="code">mousePressed()</span>
+        routine that does this:</p>
+
+
+    <pre>
+currentCurve = new CurveData();        // Create a new CurveData object.
+
+currentCurve.color = currentColor;     // The color of the curve is taken from an
+                                       // instance variable that represents the
+                                       // currently selected drawing color.
+
+currentCurve.symmetric = useSymmetry;  // The "symmetric" property of the curve
+                                       // is also copied from the current value
+                                       // of an instance variable, useSymmetry.
+
+currentCurve.points = new ArrayList&lt;Point&gt;();  // Create a new point list object.
+
+currentCurve.points.add( new Point(evt.getX(), evt.getY()) );
+           // The point where the user pressed the mouse is the first point on
+           // the curve.  A new Point object is created to hold the coordinates
+           // of that point and is added to the list of points for the curve.
+   
+curves.add(currentCurve);   // Add the CurveData object to the list of curves.</pre>
+
+
+    <p>As the user drags the mouse, new points are added to <span class="code">currentCurve</span>,
+        and <span class="code">repaint()</span> is called. When the picture is redrawn, the new
+        point will be part of the picture.</p>
+
+
+    <p>The <span class="code">paintComponent()</span> method has to use the data in <span class="code">curves</span>
+        to draw all the curves. The basic structure is a for-each loop that processes
+        the data for each individual curve in turn. This has the form:</p>
+
+
+    <pre>for ( CurveData curve : curves ) {
+   .
+   .  // Draw the curve represented by the object, curve, of type CurveData.
+   .  
+}</pre>
+
+
+    <p>In the body of this loop, <span class="code">curve.points</span> is a variable of
+        type <span class="atype">ArrayList&lt;Point&gt;</span> that holds the list of
+        points on the curve. The <span class="code">i-th</span> point on the curve can be
+        obtained by calling the <span class="code">get()</span> method of this list:
+        <span class="code">curve.points.get(i)</span>. This returns a value of type
+        <span class="classname">Point</span> which contains instance variables named
+        <span class="code">x</span> and <span class="code">y</span>. We can refer directly to the
+        x-coordinate of the <span class="code">i-th</span> point as:</p>
+
+
+    <pre>curve.points.get(i).x</pre>
+
+
+    <p>This might seem rather complicated, but it's a nice example of a complex name
+        that specifies a path to a desired piece of data: Go to the object, <span class="code">curve</span>.
+        Inside <span class="code">curve</span>, go to <span class="code">points</span>. Inside <span
+                class="code">points</span>,
+        get the <span class="code">i-th</span> item. And from that item, get the instance variable
+        named&nbsp;<span class="code">x</span>. Here is the complete definition of the
+        <span class="code">paintComponent()</span> method:</p>
+
+
+    <pre>public void paintComponent(Graphics g) {
+   super.paintComponent(g);
+   Graphics2D g2 = (Graphics2D)g;
+   g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, 
+                                   RenderingHints.VALUE_ANTIALIAS_ON);   
+   for ( CurveData curve : curves) {
+      g.setColor(curve.color);
+      for (int i = 1; i &lt; curve.points.size(); i++) {
+            // Draw a line segment from point number i-1 to point number i.
+         int x1 = curve.points.get(i-1).x;
+         int y1 = curve.points.get(i-1).y;
+         int x2 = curve.points.get(i).x;
+         int y2 = curve.points.get(i).y;
+         g.drawLine(x1,y1,x2,y2);
+         if (curve.symmetric) {
+               // Also draw the horizontal and vertical reflections
+               // of the line segment.
+            int w = getWidth();
+            int h = getHeight();
+            g.drawLine(w-x1,y1,w-x2,y2);
+            g.drawLine(x1,h-y1,x2,h-y2);
+            g.drawLine(w-x1,h-y1,w-x2,h-y2);
+         }
+      }
+   }
+} // end paintComponent()</pre>
+
+
+    <p>I encourage you to read the full source code, <span class="sourceref"><a
+            href="../source/chapter7/SimplePaint2.java">SimplePaint2.java</a></span>,
+        and to try out the program.
+        In addition to serving as an example of using parameterized types, it also serves
+        as another example of creating and using menus.</p>
+
+
+    <hr class="break">
+    <h3 class="subsection_title">
+        <a name="arrays.3.4">7.3.4&nbsp;&nbsp;Vectors</a>
+    </h3>
+
+
+    <p>Early versions of Java did not include <span class="classname">ArrayList</span>, but they did have
+        a very similar class named <span class="code">java.util.Vector</span> that serves much the same purpose.
+        You can still see
+        <span class="classname">Vectors</span> used in older code and in many of Java's standard classes, so
+        it's worth knowing about them. <span class="classname">Vector</span> is a parameterized class,
+        so that you can use types such as <span class="atype">Vector&lt;String&gt;</span> and
+        <span class="atype">Vector&lt;Integer&gt;</span>, but you will often see it used without the
+        type parameter, which is essentially equivalent to using <span class="atype">Vector&lt;Object&gt;</span>.</p>
+
+
+    <p>Using a <span class="classname">Vector</span> is similar to using an
+        <span class="classname">ArrayList</span>, except that different names are used for some commonly used
+        instance methods, and some instance methods in one class don't correspond to
+        any instance method in the other class.
+        Suppose that <span class="code">vec</span> is a variable of type <span class="atype">Vector&lt;T&gt;</span>.
+        Then we have
+        instance methods:</p>
+
+
+    <ul>
+
+        <li>
+            <span class="codedef">vec.size()</span> -- a function that returns the number of elements
+            currently in the vector.
+        </li>
+
+
+        <li>
+            <span class="codedef">vec.elementAt(N)</span> -- returns the <span class="code">N-th</span> element of the
+            vector, for an
+            integer <span class="code">N</span>. <span class="code">N</span> must be in the range 0 to <span
+                class="code">vec.size()-1</span>.
+            This is the same as <span class="code">get(N)</span> for an <span class="classname">ArrayList</span>.
+        </li>
+
+
+        <li>
+            <span class="codedef">vec.setElementAt(obj,N)</span> -- sets the <span class="code">N-th</span> element in
+            the vector to be <span class="code">obj</span>. <span class="code">N</span> must be in the range 0 to <span
+                class="code">vec.size()-1</span>.
+            This is the same as <span class="code">set(N,obj)</span> for an <span class="classname">ArrayList</span>.
+        </li>
+
+
+        <li>
+            <span class="codedef">vec.addElement(obj)</span> -- adds the <span class="classname">Object</span>, <span
+                class="code">obj</span>, to
+            the end of the vector. This is the same as the <span class="code">add()</span> method of an
+            <span class="classname">ArrayList</span>.
+        </li>
+
+
+        <li>
+            <span class="codedef">vec.removeElement(obj)</span> -- removes <span class="code">obj</span> from the
+            vector, if it
+            occurs. Only the first occurrence is removed. This is the same as
+            <span class="code">remove(obj)</span> for an <span class="classname">ArrayList</span>.
+        </li>
+
+
+        <li>
+            <span class="codedef">vec.removeElementAt(N)</span> -- removes the <span class="code">N-th</span> element,
+            for an
+            integer <span class="code">N</span>. <span class="code">N</span> must be in the range 0 to <span
+                class="code">vec.size()-1</span>.
+            This is the same as <span class="code">remove(N)</span> for an <span class="classname">ArrayList</span>.
+        </li>
+
+
+        <li>
+            <span class="codedef">vec.setSize(N)</span> -- sets the size of the vector to <span class="code">N</span>.
+            If there
+            were more than <span class="code">N</span> elements in <span class="code">vec</span>, the extra elements are
+            removed. If there were fewer than <span class="code">N</span> elements, extra spaces are filled
+            with <span class="code">null</span>. The <span class="classname">ArrayList</span> class, unfortunately, does
+            not have a
+            corresponding <span class="code">setSize()</span> method.
+        </li>
+
+    </ul>
+
+
+</div>
+<hr>
+<div align="right">
+    <small>
+        [ <a href="s2.html">Previous Section</a> |
+        <a href="s4.html">Next Section</a> |
+        <a href="index.html">Chapter Index</a> |
+        <a href="../index.html">Main Index</a> ]
+    </small>
+</div>
+</body>
+</html>

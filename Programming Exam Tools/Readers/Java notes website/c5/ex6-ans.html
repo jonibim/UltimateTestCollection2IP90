@@ -1,0 +1,187 @@
+<html>
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Javanotes 7.0, Solution to Exercise 6, Chapter 5</title>
+    <link type="text/css" rel="stylesheet" href="../javanotes.css">
+</head>
+<body>
+<div align="right">
+    <small>
+        [ <a href="exercises.html">Exercises</a> |
+        <a href="index.html">Chapter Index</a> |
+        <a href="../index.html">Main Index</a> ]
+    </small>
+</div>
+<hr>
+<div class="content">
+    <h2>Solution for Programming Exercise 5.6</h2>
+    <hr class="break">
+    <p>
+        <span class="start"><big>T</big>his page contains</span> a sample solution to
+        one of the exercises from <a href="../index.html">Introduction to Programming Using Java</a>.</p>
+    <hr>
+    <h3 class="exercise">Exercise 5.6:</h3>
+    <p>
+        <a href="../c4/ex7-ans.html">Exercise&nbsp;4.7</a> asked you to write
+        a program that administers a 10-question addition quiz. Rewrite that program
+        so that it uses the following class to represent addition questions:</p>
+
+    <pre>public class AdditionQuestion {
+
+    private int a, b;  // The numbers in the problem.
+
+    public AdditionQuestion() { // constructor
+        a = (int)(Math.random() * 50 + 1);
+        b = (int)(Math.random() * 50);
+    }
+
+    public String getQuestion() {
+        return "What is " + a + " + " + b + " ?";
+    }
+
+    public int getCorrectAnswer() {
+        return a + b;
+    }
+
+}</pre>
+
+    <hr>
+    <div class="exercisesubtitle" align="center">
+        <big><b>Discussion</b></big>
+    </div>
+    <hr>
+    <p>The original program used two array of type <span class="ptype">int[]</span>
+        to represent the addition questions. One array held the first number from each of
+        the ten problems, while the other array held the second number. This representation is
+        an example of <span class="newword">parallel arrays</span>: The data for a single question is split
+        between two arrays. (The arrays are called "parallel" because to see all the data for
+        a problem next to each other, you would have to lay the arrays down next to each other,
+        like parallel lines, so the i-th element in one array lies next to the i-th element in
+        the other array.)</p>
+
+    <p>The new version of the program can use an array of ten objects of type
+        <span class="classname">AdditionQuestion</span> to represent the quiz. The data that we need for
+        any one question can now be found in the same place -- the object that represents that
+        question. This makes for a neater solution than using parallel arrays.</p>
+
+    <p>Some of the functionality
+        that we need to create, administer, and grade the quiz has been incorporated into
+        the <span class="classname">AdditionQuestion</span> class. For example, the constructor in that
+        class already selects random numbers to be used in the problem, so creating a problem is
+        just a matter of calling the constructor, so there is no need to use random numbers when
+        making a problem in the <span class="code">createQuiz()</span> method. Also, to get the question
+        and correct answer for a problem, we can just call <span class="code">questions[i].getQuestion()</span>
+        and <span class="code">questions[i].getCorrectAnswer()</span>. In fact, we can't get the question
+        any other way, since the two instance variables in
+        an <span class="classname">ArithmeticQuestion</span> are <span class="code">private</span>.
+        One downside of this is that I couln't format the output from <span class="code">gradeQuis()</span>
+        as neatly as in the first version.</p>
+
+    <p>All-in-all, t is fairly straightforward to translate the
+        old version of the program into the new version. You can read my solution below.</p>
+
+    <p>By the way, I considered adding the user's answer to the <span class="classname">AdditionQuestion</span>
+        class, along with the correct answer, but the user's answer doesn't seem to me to be logically
+        part of a question. So I think it makes more sense to keep it out of the object that
+        represents the question.</p>
+
+    <p>Remember that this program depends on the <span class="classname">AdditionQuiz</span> class that is given in the
+        statement of the problem.</p>
+
+    <hr>
+    <div class="exercisesubtitle" align="center">
+        <big><b>The Solution</b></big>
+    </div>
+    <hr>
+
+    <pre class="exercisecode">/**
+ * This program administers a ten-question addition quiz to the user.  The numbers
+ * for the problem are chosen at random.  The numbers and the answers are one or
+ * two digits.  After asking the user the ten questions, the computer grades the
+ * quiz, telling the user the correct answer for any problem they got wrong.
+ */
+public class AdditionQuizWithObjects {
+    
+    <span class="newcode">private static AdditionQuestion[] questions;  // The questions for the quiz</span>
+
+    private static int[] userAnswers;   // The user's answers to the ten questions.
+    
+    
+    public static void main(String[] args) {
+        System.out.println();
+        System.out.println("Welcome to the addition quiz!");
+        System.out.println();
+        createQuiz();
+        administerQuiz();
+        gradeQuiz();
+    }
+    
+    
+    /**
+     * Creates the <span class="newcode">array of objects that holds the quiz questions</span>
+     */
+    private static void createQuiz() {
+        <span class="newcode">questions = new AdditionQuestion[10];
+        for ( int i = 0; i &lt; 10; i++ ) {
+            questions[i] = new AdditionQuestion();
+        }</span>
+    }
+    
+    
+    /**
+     * Asks the user each of the ten quiz questions and gets the user's answers.
+     * The answers are stored in an array, which is created in this subroutine.
+     */
+    private static void administerQuiz() {
+        userAnswers = new int[10];
+        for (int i = 0; i &lt; 10; i++) {
+            int questionNum = i + 1;
+            System.out.printf("Question %2d:  <span class="newcode">%s</span> ",
+                                  questionNum, <span class="newcode">questions[i].getQuestion())</span>;
+            userAnswers[i] = TextIO.getlnInt();
+        }
+    }
+    
+    
+    /**
+     * Shows all the questions, with their correct answers, and computes a grade
+     * for the quiz.  For each question, the user is told whether they got
+     * it right.
+     */
+    private static void gradeQuiz() {
+        System.out.println();
+        System.out.println("Here are the correct answers:");
+        int numberCorrect = 0;
+        int grade;
+        for (int i = 0; i &lt; 10; i++) {
+            int questionNum = i + 1;
+            System.out.printf("   Question <span class="newcode">%2d:  %s  Correct answer is %d  </span>",
+                questionNum, <span class="newcode">questions[i].getQuestion(), questions[i].getCorrectAnswer()</span>);
+            if ( userAnswers[i] == <span class="newcode">questions[i].getCorrectAnswer()</span> ) {
+                System.out.println("You were CORRECT.");
+                numberCorrect++;
+            }
+            else {
+                System.out.println("You said " + userAnswers[i] + ", which is INCORRECT.");
+            }
+        }
+        grade = numberCorrect * 10;
+        System.out.println();
+        System.out.println("You got " + numberCorrect + " questions correct.");
+        System.out.println("Your grade on the quiz is " + grade);
+        System.out.println();
+    }
+
+} // end class AdditionQuizWithObjects</pre>
+
+</div>
+<hr>
+<div align="right">
+    <small>
+        [ <a href="exercises.html">Exercises</a> |
+        <a href="index.html">Chapter Index</a> |
+        <a href="../index.html">Main Index</a> ]
+    </small>
+</div>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<html>
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Javanotes 7.0, Exercises for Chapter 7</title>
+    <link type="text/css" rel="stylesheet" href="../javanotes.css">
+</head>
+<body>
+<div align="right">
+    <small>
+        [ <a href="index.html">Chapter Index</a> |
+        <a href="../index.html">Main Index</a> ]
+    </small>
+</div>
+<hr>
+<div class="content">
+    <h2>Programming Exercises for Chapter 7</h2>
+    <hr class="break">
+    <p>
+        <span class="start"><big>T</big>his page contains</span> several exercises for Chapter 7
+        in <a href="../index.html">Introduction to Programming Using Java</a>. For each exercise, a link to
+        a possible solution is provided. Each solution includes a discussion of how a programmer might approach the
+        problem and interesting points raised by the problem or its solution, as well as complete source
+        code of the solution.</p>
+    <hr>
+    <h3 class="exercise">Exercise 7.1:</h3>
+    <p>Write a subroutine that creates an ArrayList containing several <i>different</i>
+        random integers in the range from 1 up to some specified maximum. The number of integers and the
+        maximum allowed value for the integers should be parameters to the subroutine. Write a <span
+                class="code">main()</span>
+        routine to test your subroutine.</p>
+
+    <p align="right">
+        <a href="ex1-ans.html">See the Solution</a>
+    </p>
+    <hr>
+    <h3 class="exercise">Exercise 7.2:</h3>
+    <p>Suppose that <span class="code">M</span> is a two-dimensional array that
+        has <span class="code">R</span> rows and <span class="code">C</span> columns. The <span class="newword">transpose</span>
+        of <span class="code">M</span> is defined to be an array <span class="code">T</span> that has <span
+                class="code">C</span> rows
+        and <span class="code">R</span> columns such that <span class="code">T[i][j]&nbsp;=&nbsp;M[j][i]</span> for
+        each <span class="code">i</span> and <span class="code">j</span>. Write a function that takes an array
+        of type <span class="atype">int[][]</span> as a parameter, and returns the transpose of that array.
+        (Assume that the parameter is a typical 2D array in which all the rows have the same length.)
+        Also write a subroutine to print a 2D array of integers in neat rows and columns, and
+        include a <span class="code">main()</span> routine to test your work.</p>
+
+    <p align="right">
+        <a href="ex2-ans.html">See the Solution</a>
+    </p>
+    <hr>
+    <h3 class="exercise">Exercise 7.3:</h3>
+    <p>In <a href="../c7/s4.html#arrays.4.4">Subsection&nbsp;7.4.4</a>, it is mentioned that the
+        standard sorting method <span class="code">Arrays.sort()</span> is much faster and efficient
+        than selection sort. Write a program to test this claim. To be specific, your
+        program should create a large array filled with random real numbers. It should
+        use both <span class="code">Arrays.sort()</span> and <span class="code">selectionSort()</span> to sort
+        the array, and it should time how long it takes to perform each sort. Furthermore,
+        it should do the same thing for a large array of random <span class="classname">Strings</span>.
+        To find the times, you can use <span class="code">System.currentTimeMillis()</span>
+        (see <a href="../c2/s3.html#basics.3.1">Subsection&nbsp;2.3.1</a> and the example <span class="sourceref"><a
+                href="../source/chapter2/TimedComputation.java">TimedComputation.java</a></span>).</p>
+
+    <p align="right">
+        <a href="ex3-ans.html">See the Solution</a>
+    </p>
+    <hr>
+    <h3 class="exercise">Exercise 7.4:</h3>
+    <p>In <a href="../c6/ex1-ans.html">Exercise&nbsp;6.1</a>, you wrote a
+        program <span class="code">SimpleStamperWithDrag</span> that allows the user to
+        place red rectangles and blue ovals in a panel by clicking and dragging
+        the mouse. However, that program does not store any information about
+        what has been drawn, so the panel cannot repaint itself correctly. Revise the program
+        to use an <span class="classname">ArrayList</span> to store data about the contents of the panel. All
+        drawing should be done in a <span class="code">paintComponent()</span> method.
+    </p>
+    <p align="right">
+        <a href="ex4-ans.html">See the Solution</a>
+    </p>
+    <hr>
+    <h3 class="exercise">Exercise 7.5:</h3>
+    <p>Write a program that will
+        read a sequence of positive real numbers entered by the user and will print the
+        same numbers in sorted order from smallest to largest. The user will input a
+        zero to mark the end of the input. Assume that at most 100 positive numbers
+        will be entered. Do <b>not</b> use any built-in function such as
+        <span class="code">Arrays.sort()</span>. Do the sorting yourself.</p>
+
+    <p align="right">
+        <a href="ex5-ans.html">See the Solution</a>
+    </p>
+    <hr>
+    <h3 class="exercise">Exercise 7.6:</h3>
+    <p>The sample program <span class="sourceref"><a href="../source/chapter6/RandomArt.java">RandomArt.java</a></span>
+        from
+        <a href="../c6/s4.html#GUI1.5.1">Subsection&nbsp;6.4.1</a> shows a different random "artwork" every four
+        seconds. There
+        are three types of "art", one made from lines, one from circles, and one from filled
+        squares. However, the program does not save the data for the picture that is shown
+        on the screen. As a result, the picture cannot be redrawn when necessary. In fact,
+        every time <span class="code">paintComponent()</span> is called, a new picture is drawn.</p>
+
+    <p>Write a new version of <span class="code">RandomArt.java</span> that saves the
+        data needed to redraw its pictures. The <span class="code">paintComponent()</span> method
+        should simply use the data to draw the picture. New data should be recomputed
+        only every four seconds, in response to an event from the timer that drives the
+        program.</p>
+
+    <p>To make this interesting, write a separate class for each of the three different
+        types of art. Also write an abstract class to serve as the common base class for
+        the three classes. Since all three types of art use a random gray background,
+        the background color can be defined in their superclass. The superclass also
+        contains a <span class="code">draw()</span> method that draws the picture; this is an abstract
+        method because its implementation depends on the particular type of art that
+        is being drawn. The abstract class can be defined as:</p>
+
+    <pre>
+private abstract class ArtData {
+   Color backgroundColor;  // The background color for the art.
+   ArtData() {  // Constructor sets background color to be a random gray.
+      int x = (int)(256*Math.random());
+      backgroundColor = new Color( x, x, x );
+   }
+   abstract void draw(Graphics g);  // Draws this artwork.
+}</pre>
+
+    <p>Each of the three subclasses of <span class="code">ArtData</span> must define its own <span
+            class="code">draw()</span>
+        method. It must also define instance variables to hold the data necessary to draw the
+        picture. I suggest that you should create random data for the picture in the constructor
+        of the class, so that constructing the object will automatically create the data for the random
+        artwork. (One problem with this is that you can't create the data until you know the
+        size of the panel, so you can't create an <span class="code">ArtData</span> object in the constructor of the
+        panel.
+        One solution is to create an <span class="code">ArtData</span> object at the beginning of the <span
+                class="code">paintComponent()</span>
+        method, if the object has not already been created.)
+        In each of the three subclasses, you will need to use one or more arrays or ArrayLists
+        to store the data.</p>
+
+    <p align="right">
+        <a href="ex6-ans.html">See the Solution</a>
+    </p>
+    <hr>
+    <h3 class="exercise">Exercise 7.7:</h3>
+    <p>Write a program that will read a text file selected by the user,
+        and will make an alphabetical list of all the different words in that file. All words
+        should be converted to lower case, and duplicates should be eliminated from the list.
+        The list should be written to an output file selected by the user. As discussed
+        in <a href="../c2/s4.html#basics.4.4">Subsection&nbsp;2.4.4</a>, you can use <span
+                class="classname">TextIO</span> to read and
+        write files. Use a variable of type <span class="atype">ArrayList&lt;String&gt;</span> to
+        store the words. It is not easy to separate a file into words as you are reading
+        it. You can use the following method:</p>
+
+    <pre>/**
+ * Read the next word from TextIO, if there is one.  First, skip past
+ * any non-letters in the input.  If an end-of-file is encountered before 
+ * a word is found, return null.  Otherwise, read and return the word.
+ * A word is defined as a sequence of letters.  Also, a word can include
+ * an apostrophe if the apostrophe is surrounded by letters on each side.
+ * @return the next word from TextIO, or null if an end-of-file is 
+ *     encountered
+ */
+private static String readNextWord() {
+   char ch = TextIO.peek(); // Look at next character in input.
+   while (ch != TextIO.EOF &amp;&amp; ! Character.isLetter(ch)) {
+          // Skip past non-letters.
+      TextIO.getAnyChar();  // Read the character.
+      ch = TextIO.peek();   // Look at the next character.
+   }
+   if (ch == TextIO.EOF) // Encountered end-of-file
+      return null;
+   // At this point, we know the next character is a letter, so read a word.
+   String word = "";  // This will be the word that is read.
+   while (true) {
+      word += TextIO.getAnyChar();  // Append the letter onto word.
+      ch = TextIO.peek();  // Look at next character.
+      if ( ch == '\'' ) {
+            // The next character is an apostrophe.  Read it, and
+            // if the following character is a letter, add both the
+            // apostrophe and the letter onto the word and continue
+            // reading the word.  If the character after the apostrophe
+            // is not a letter, the word is done, so break out of the loop.
+         TextIO.getAnyChar();   // Read the apostrophe.
+         ch = TextIO.peek();    // Look at char that follows apostrophe.
+         if (Character.isLetter(ch)) {
+            word += "\'" + TextIO.getAnyChar();
+            ch = TextIO.peek();  // Look at next char.
+         }
+         else
+            break;
+      }
+      if ( ! Character.isLetter(ch) ) {
+            // If the next character is not a letter, the word is
+            // finished, so break out of the loop.
+         break;
+      }
+      // If we haven't broken out of the loop, next char is a letter.
+   }
+   return word;  // Return the word that has been read.
+}</pre>
+
+    <p>Note that this method will return <span class="code">null</span> when the file has been
+        entirely read. You can use this as a signal to stop processing the input file.</p>
+
+    <p align="right">
+        <a href="ex7-ans.html">See the Solution</a>
+    </p>
+    <hr>
+    <h3 class="exercise">Exercise 7.8:</h3>
+    <p>The game of Go Moku (also
+        known as Pente or Five Stones) is similar to Tic-Tac-Toe, except that it is played
+        on a much larger board and the object is to get five squares in a row rather
+        than three. Players take turns placing pieces on a board. A piece can be placed
+        in any empty square. The first player to get five pieces in a row -- horizontally,
+        vertically, or diagonally -- wins. If all squares are filled
+        before either player wins, then the game is a draw. Write a program that lets
+        two players play Go Moku against each other.</p>
+
+
+    <p>Your program will be simpler than the <span class="classname">Checkers</span> program from
+        <a href="../c7/s5.html#arrays.5.3">Subsection&nbsp;7.5.3</a>. Play alternates strictly between the two players,
+        and there is no need to highlight the legal moves. You will only need two classes,
+        a short panel class to set up the interface and a <span class="classname">Board</span> class to draw
+        the board and do all the work of the game. Nevertheless, you will probably want
+        to look at the source code for the checkers program,
+        <span class="sourceref"><a href="../source/chapter7/Checkers.java">Checkers.java</a></span>, for ideas about the
+        general
+        outline of the program.</p>
+
+
+    <p>The hardest part of the program is checking whether the move that a player
+        makes is a winning move. To do this, you have to look in each of the four
+        possible directions from the square where the user has placed a piece. You have
+        to count how many pieces that player has in a row in that direction. If the
+        number is five or more in any direction, then that player wins. As a hint, here
+        is part of the code from my program. This code counts the number of pieces that
+        the user has in a row in a specified direction. The direction is specified by
+        two integers, <span class="code">dirX</span> and <span class="code">dirY</span>. The values of these variables
+        are 0, 1, or -1, and at least one of them is non-zero. For example, to look in
+        the horizontal direction, <span class="code">dirX</span> is 1 and <span class="code">dirY</span> is 0.</p>
+
+
+    <pre>int ct = 1;  // Number of pieces in a row belonging to the player.
+
+int r, c;    // A row and column to be examined
+
+r = row + dirX;  // Look at square in specified direction.
+c = col + dirY;
+while ( r &gt;= 0 &amp;&amp; r &lt; 13 &amp;&amp; c &gt;= 0 &amp;&amp; c &lt; 13 
+                                  &amp;&amp; board[r][c] == player ) {
+        // Square is on the board, and it 
+        // contains one of the players' pieces.
+   ct++;
+   r += dirX;  // Go on to next square in this direction.
+   c += dirY;
+}
+
+r = row - dirX;  // Now, look in the opposite direction.
+c = col - dirY;
+while ( r &gt;= 0 &amp;&amp; r &lt; 13 &amp;&amp; c &gt;= 0 &amp;&amp; c &lt; 13 
+                                 &amp;&amp; board[r][c] == player ) {
+   ct++;
+   r -= dirX;   // Go on to next square in this direction.
+   c -= dirY;
+}</pre>
+
+
+    <p>Here is a picture of my program, just after black has won the game.</p>
+
+
+    <p align="center">
+        <img src="gomoku-board.png" width="350" height="250" alt="gomoku game showing a winning position"></p>
+
+
+    <p align="right">
+        <a href="ex8-ans.html">See the Solution</a>
+    </p>
+</div>
+<hr>
+<div align="right">
+    <small>
+        [ <a href="index.html">Chapter Index</a> |
+        <a href="../index.html">Main Index</a> ]
+    </small>
+</div>
+</body>
+</html>

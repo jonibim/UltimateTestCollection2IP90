@@ -1,0 +1,498 @@
+<html>
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Javanotes 7.0, Section 7.1 -- Array Details</title>
+    <link type="text/css" rel="stylesheet" href="../javanotes.css">
+</head>
+<body>
+<div align="right">
+    <small>
+        [ <a href="s2.html">Next Section</a> |
+        <a href="index.html">Chapter Index</a> |
+        <a href="../index.html">Main Index</a> ]
+    </small>
+</div>
+<hr>
+<table class="subsections" vspace="8" hspace="8" cellpadding="5" border="2" align="right">
+    <tr>
+        <td>
+            <div align="center">
+                <b>Subsections</b>
+                <hr>
+                <small><a href="#arrays.1.1">For-each Loops</a>
+                    <br>
+                    <a href="#arrays.1.2">Variable Arity Methods</a>
+                    <br>
+                    <a href="#arrays.1.3">Array Literals</a>
+                    <br>
+                </small>
+            </div>
+        </td>
+    </tr>
+</table>
+<div class="content">
+    <h3 class="section_title">Section 7.1</h3>
+    <h2 class="section_title">Array Details</h2>
+    <hr class="break">
+
+
+    <p>
+        <span class="start"><big>A</big>rray basics have been discussed</span> in previous chapters,
+        but there are still details of Java syntax to be filled in, and there is a lot more to say
+        about using arrays. This section looks at some of the syntactic details,
+        with more information about array processing to come in the rest of the
+        chapter.</p>
+
+
+    <p>To briefly review some of the basics.... An array is a numbered sequence
+        of <i>elements</i>, and each element acts like a separate variable. All of the
+        elements are of the same type, which is called the <i>base type</i> of the array.
+        The array as a whole also has a type. If the base type is <span class="classname">btype</span>,
+        then the array is of type <span class="atype">btype[]</span>. Each element in the array
+        has an <i>index</i>, which is just its numerical position in the sequence of elements.
+        If the array is <span class="code">A</span>, then the i-th element of the array is <span
+                class="code">A[i]</span>.
+        The number of elements in an array is called its <i>length</i>. The length of
+        an array <span class="code">A</span> is <span class="code">A.length</span>. The length of an array can't
+        be changed after the array is created. The elements of the array <span class="code">A</span>
+        are <span class="code">A[0]</span>, <span class="code">A[1]</span>, ..., <span class="code">A[A.length-1]</span>.
+        An attempt to refer to an array element with an index outside the range
+        from zero to <span class="code">A.length-1</span> causes an <span class="classname">ArrayIndexOutOfBoundsException</span>.
+    </p>
+
+
+    <p>Arrays in Java are objects, so an array variable can only refer to an array,
+        it does not contain the array. The value of an array variable can also be <span class="code">null</span>.
+        In that case, it does not refer to any array, and an attempt to refer to an
+        array element such as <span class="code">A[i]</span> will cause a <span
+                class="classname">NullPointerException</span>.
+        Arrays are created using a special form of the <span class="code">new</span> operator. For
+        example,</p>
+
+
+    <pre>int[] A = new int[10];</pre>
+
+
+    <p>creates a new array with base type <span class="ptype">int</span> and length 10, and it sets
+        the variable <span class="code">A</span> to refer to the newly created array.</p>
+
+
+    <hr class="break">
+    <h3 class="subsection_title">
+        <a name="arrays.1.1">7.1.1&nbsp;&nbsp;For-each Loops</a>
+    </h3>
+
+
+    <p>Arrays are often processed using <span class="code">for</span> loops. A <span class="code">for</span>
+        loop makes it easy to process each element in an array from beginning to end. For
+        example, if <span class="code">namelist</span> is an array of <span class="classname">Strings</span>,
+        then all the values in the list can be printed using</p>
+
+
+    <pre>for (int i = 0; i &lt; namelist.length; i++) {
+    System.out.println( namelist[i] );
+}</pre>
+
+
+    <p>This type of processing is so common that there is an alternative form of
+        the <span class="code">for</span> loop that makes it easier to write. The alternative
+        is called a <span class="newword">for-each loop</span>. It is probably easiest to
+        start with an example. Here is a for-each loop for printing all the values
+        in an array of <span class="classname">Strings</span>:</p>
+
+
+    <pre>for ( String name : namelist ) {
+    System.out.println( name );
+}</pre>
+
+
+    <p>The meaning of "<span class="code">for (String name : namelist)</span>" is
+        "for each string, name, in the array, namelist, do the following". The effect
+        is that the variable <span class="code">name</span> takes on each of the values in <span
+                class="code">namelist</span>
+        in turn, and the body of the loop is executed for each of those values. Note that
+        there is no array index in the loop. The loop control variable, <span class="code">name</span>,
+        represents one of the values in the array, not the index of one of the values.
+    </p>
+
+
+    <p>The for-each loop is meant specifically for processing all the values
+        in a data structure, and we will see in <a href="../c10/index.html">Chapter&nbsp;10</a> that it applies to other
+        data structures besides arrays. The for-each loop makes it possible to process the
+        values without even knowing the details of how the data is structured. In the
+        case of arrays, it lets you avoid the complications of using array indices.</p>
+
+
+    <p>A for-each loop
+        will perform the same operation for each value that is stored
+        in an array.
+        If <span class="code">itemArray</span> is an array of type <span class="atype">BaseType[]</span>,
+        then a for-each loop for <span class="code">itemArray</span> has the form:</p>
+
+
+    <pre>for ( BaseType item : itemArray ) {
+   .
+   .  // process the item
+   .
+}</pre>
+
+
+    <p>As usual, the braces are optional if there is only one statement inside the loop.
+        In this loop, <span class="code">item</span> is the loop control variable. It is
+        declared as a variable of type <span class="classname">BaseType</span>, where
+        <span class="classname">BaseType</span> is the base type of the array. (In a
+        for-each loop, the loop control variable <b>must</b> be declared in the
+        loop; it cannot be a variable that already exists outside the loop.)
+        When this loop is executed, each value from the array is assigned
+        to <span class="code">item</span> in turn and the body of the loop is executed for each
+        value. Thus, the above loop is exactly equivalent to:</p>
+
+
+    <pre>for ( int index = 0; index &lt; itemArray.length; index++ ) {
+   BaseType item;
+   item = itemArray[index];  // Get one of the values from the array
+     .
+     .  // process the item
+     .  
+}</pre>
+
+
+    <p>For example, if <span class="code">A</span> is an array of type <span class="atype">int[]</span>, then
+        we could print all the values from <span class="code">A</span> with the for-each loop:</p>
+
+
+    <pre>
+for ( int item : A )
+   System.out.println( item );
+</pre>
+
+
+    <p>and we could add up all the positive integers in <span class="code">A</span> with:</p>
+
+
+    <pre>int sum = 0;   // This will be the sum of all the positive numbers in A
+for ( int item : A ) {
+   if (item &gt; 0)
+      sum = sum + item;
+}</pre>
+
+
+    <p>The for-each loop is not always appropriate. For example, there is no
+        simple way to use it to process the items in just a part of an array, or to
+        process the elements in reverse order.
+        However, it does make the code a little simpler when you do want to process all the values, in order.
+        since it eliminates any need to use array indices.</p>
+
+
+    <p>It's important to note that a for-each loop processes the <b>values</b> in
+        the array, not the <b>elements</b> (where an element means the actual memory
+        location that is part of the array). For example, consider the following
+        incorrect attempt to fill an array of integers with 17's:</p>
+
+
+    <pre>int[] intList = new int[10];
+for ( int item : intList ) {   <span class="newcode">// INCORRECT! DOES NOT MODIFY THE ARRAY!</span>
+   item = 17;
+}</pre>
+
+
+    <p>The assignment statement <span class="code">item = 17</span> assigns the value 17 to
+        the loop control variable, <span class="code">item</span>. However, this has nothing to
+        do with the array. When the body of the loop is executed, the
+        value from one of the elements of the array is copied into <span class="code">item</span>.
+        The statement <span class="code">item&nbsp;=&nbsp;17</span> replaces that copied value
+        but has no effect on the array element from which it was copied; the
+        value in the array is not changed. The loop is equivalent to</p>
+
+
+    <pre>int[] intList = new int[10];
+for ( int i = 0; i &lt; intList.length; i++ ) {
+   int item = intList[i];
+   item = 17;
+}</pre>
+
+
+    <p>which certainly does not change the value of any element in the array.</p>
+
+
+    <hr class="break">
+    <h3 class="subsection_title">
+        <a name="arrays.1.2">7.1.2&nbsp;&nbsp;Variable Arity Methods</a>
+    </h3>
+
+
+    <p>Before Java 5, every method in Java had a fixed arity.
+        (The <span class="newword">arity</span> of a method is defined as the number
+        of parameters in a call to the method.) In a fixed arity method, the number
+        of parameters must be the same in every call to the method and must be the same
+        as the number of formal parameters in the method's definition. Java&nbsp;5 introduced
+        <span class="newword">variable arity methods</span>. In a variable arity method, different
+        calls to the method can have different numbers of parameters. For example,
+        the formatted output method <span class="code">System.out.printf</span>, which was introduced
+        in <a href="../c2/s4.html#basics.4.1">Subsection&nbsp;2.4.1</a>, is a variable arity method. The first
+        parameter of <span class="code">System.out.printf</span> must be a <span class="classname">String</span>,
+        but it can have any number of additional parameters, of any types.</p>
+
+
+    <p>Calling a variable arity method is no different from calling any other
+        sort of method, but writing one requires some new syntax. As an example,
+        consider a method that can compute the average of any number of values of
+        type <span class="ptype">double</span>. The definition of such a method could begin
+        with:</p>
+
+
+    <pre>public static double average( double...  numbers ) {</pre>
+
+
+    <p>Here, the <span class="code">...</span> after the type name, <span class="code">double</span>,
+        is what makes this a variable arity method. It indicates
+        that any number of values of type <span class="ptype">double</span> can be provided when
+        the subroutine is called, so that for example <span class="code">average(1,4,9,16)</span>,
+        <span class="code">average(3.14,2.17)</span>, <span class="code">average(0.375)</span>, and even
+        <span class="code">average()</span> are all legal calls to this method. Note that
+        actual parameters of type <span class="ptype">int</span> can be passed to <span class="code">average</span>.
+        The integers will, as usual, be automatically converted to real numbers.</p>
+
+
+    <p>When the method is called, the values of all the actual parameters
+        that correspond to the variable arity parameter are placed into an array,
+        and it is this array that is actually passed to the method. That is,
+        in the body of a method, a variable arity parameter of type
+        <span class="classname">T</span> actually looks like an ordinary parameter of type
+        <span class="atype">T[]</span>. The length of the array tells you how many actual parameters
+        were provided in the method call. In the <span class="code">average</span> example, the body
+        of the method would see an array named <span class="code">numbers</span> of type <span
+                class="atype">double[]</span>.
+        The number of actual parameters in the method call would be <span class="code">numbers.length</span>,
+        and the values of the actual parameters would be <span class="code">numbers[0]</span>,
+        <span class="code">numbers[1]</span>, and so on. A complete definition of the method would be:
+    </p>
+
+
+    <pre>public static double average( double... numbers ) {
+        // Inside this method, numbers if of type double[].
+   double sum;      // The sum of all the actual parameters.
+   double average;  // The average of all the actual parameters.
+   sum = 0;
+   for (int i = 0; i &lt; numbers.length; i++) {
+      sum = sum + numbers[i];  // Add one of the actual parameters to the sum.
+   }
+   average = sum / numbers.length;
+   return average;
+}</pre>
+
+
+    <p>By the way, it is possible to pass a single array
+        to a variable arity method, instead of a list of individual values. For example, suppose that
+        <span class="code">salesData</span> is a variable of type <span class="atype">double[]</span>. Then
+        it would be legal to call <span class="code">average(salesData)</span>, and this would compute
+        the average of all the numbers in the array.</p>
+
+
+    <p>The formal parameter list in the definition of a variable-arity method can
+        include more than one parameter, but the <span class="code">...</span> can only be applied to the
+        very last formal parameter.</p>
+
+
+    <p>As an example, consider a method that can draw a polygon through
+        any number of points. The points are given as values of type <span class="classname">Point</span>,
+        where an object of type <span class="classname">Point</span> has two instance variables,
+        <span class="code">x</span> and <span class="code">y</span>, of type <span class="ptype">int</span>.
+        In this case, the method has one ordinary parameter -- the
+        graphics context that will be used to draw the polygon -- in addition to the
+        variable arity parameter. Remember that inside the definition of the
+        method, the parameter <span class="code">points</span> becomes an array of
+        <span class="classname">Points</span>:</p>
+
+
+    <pre>public static void drawPolygon(Graphics g, Point... points) {
+    if (points.length &gt; 1) {  // (Need at least 2 points to draw anything.)
+       for (int i = 0; i &lt; points.length - 1; i++) {
+           // Draw a line from i-th point to (i+1)-th point
+           g.drawLine( points[i].x, points[i].y, points[i+1].x, points[i+1].y );
+       }
+       // Now, draw a line back to the starting point.
+       g.drawLine( points[points.length-1].x, points[points.length-1].y,
+                       points[0].x, points[0].y );
+    }
+}</pre>
+
+
+    <p>When this method is called, the subroutine call statement must have one actual parameter
+        of type <span class="classname">Graphics</span>, which can be followed by any number of
+        actual parameters of type <span class="classname">Point</span>.</p>
+
+
+    <p>For a final example, let's look at a method that strings together all of the
+        values in a list of strings into a single, long string. This example uses a for-each
+        loop to process the array:</p>
+
+
+    <pre>public static String concat( String... values ) {
+   StringBuffer buffer;  // Use a StringBuffer for more efficient concatenation.
+   buffer = new StringBuffer();  // Start with an empty buffer.
+   for ( String str : values ) { // A "for each" loop for processing the values.
+       buffer.append(str); // Add string to the buffer.
+   }
+   return buffer.toString(); // return the contents of the buffer
+}</pre>
+
+
+    <p>Given this method definition, <span class="code">concat("Hello", "World")</span>
+        would return the string "HelloWorld", and <span class="code">concat()</span> would
+        return an empty string. Since a variable arity method can also accept an
+        array as actual parameter, we could also call <span class="code">concat(lines)</span>
+        where <span class="code">lines</span> is of type <span class="atype">String[]</span>. This would
+        concatenate all the elements of the array into a single string.</p>
+
+
+    <hr class="break">
+    <h3 class="subsection_title">
+        <a name="arrays.1.3">7.1.3&nbsp;&nbsp;Array Literals</a>
+    </h3>
+
+
+    <p>We have seen that it is possible to initialize an array variable
+        with a list of values at the time it is declared.
+        For example,</p>
+
+
+    <pre>int[] squares = { 1, 4, 9, 16, 25, 36, 49 };</pre>
+
+
+    <p>This initializes <span class="code">squares</span> to refer to a newly created array
+        that contains the seven values in the list</p>
+
+
+    <p>A list initializer of this form can be used <b>only</b> in a declaration
+        statement, to give an initial value to a newly declared array variable. It
+        cannot be used in an assignment statement to assign a value to a variable that
+        already existed. However, there is another, similar notation for
+        creating a new array that can be used in other places. The notation uses
+        another form of the <span class="code">new</span>
+        operator to both create a new array object and fill it with values.
+        (The rather odd syntax
+        is similar to the syntax for anonymous inner classes, which were discussed in
+        <a href="../c5/s8.html#OOP.8.3">Subsection&nbsp;5.8.3</a>.) As an example, to assign a new value to
+        an array variable, <span class="code">cubes</span>, of type <span class="atype">int[]</span>, you could
+        use:</p>
+
+
+    <pre>cubes = new int[] { 1, 8, 27, 64, 125, 216, 343 };</pre>
+
+
+    <p>This is an assignment statement rather than a declaration, so the
+        array initializer syntax, without "<span class="code">new int[]</span>," would not
+        be legal here. The general syntax for this form of the
+        <span class="code">new</span> operator is</p>
+
+
+    <pre>new <span class="bnf">base-type</span> [ ] { <span class="bnf">list-of-values</span> }</pre>
+
+
+    <p>This is actually an expression whose value is a reference to a newly created
+        array object. In this sense, it is an "array literal," since it is something that you can type
+        in a program to represent a value. This means that it can be used in any
+        context where an object of type <span class="bnf">base-type</span><span class="code">[]</span> is legal.
+        For example, you could pass the newly created array as an actual parameter to
+        a subroutine. Consider the following utility method for creating a menu
+        from an array of strings:</p>
+
+
+    <pre>/**
+ * Creates a JMenu.  The names for the JMenuItems in the menu are
+ * given as an array of strings.
+ * @param menuName  the name for the JMenu that is to be created.
+ * @param handler  the listener that will respond to items in the menu.
+ *    This ActionListener is added as a listener for each JMenuItem.
+ * @param itemNames  an array holding the text that appears in each
+ *     JMenuItem.  If a null value appears in the array, the corresponding
+ *     item in the menu will be a separator rather than a JMenuItem.
+ * @return  the menu that has been created and filled with items.
+ */
+public static JMenu createMenu( 
+            String menuName, ActionListener handler, String[] itemNames ) {
+    JMenu menu = new JMenu(menuName);
+    for ( String itemName : itemNames ) {
+        if ( itemName == null ) {
+            menu.addSeparator();
+        }
+        else {
+            JMenuItem item = new JMenuItem(itemName);
+            item.addActionListener(handler);
+            menu.add(item);
+        }
+    }
+    return menu;
+}
+</pre>
+
+
+    <p>The third parameter in a call to <span class="code">createMenu</span> is an array of
+        strings. The array that is passed as an actual parameter could be created
+        in place, using the <span class="code">new</span> operator. For example, assuming
+        that <span class="code">listener</span> is of type <span class="classname">ActionListener</span>,
+        we can use the following statement to create an entire File menu:</p>
+
+
+    <pre>JMenu fileMenu = createMenu( "File", listener
+              <span class="newcode">new String[] { "New", "Open", "Close", null, "Quit" }</span> );</pre>
+
+
+    <p>This should convince you that
+        being able to create and use an array "in place" in this way can be very convenient,
+        in the same way that anonymous inner classes are convenient.</p>
+
+
+    <p>By the way, it is perfectly legal to use the "<span class="code">new BaseType[] {&nbsp;...&nbsp;}</span>" syntax
+        instead of the array initializer syntax in the declaration of an array variable. For example,
+        instead of saying:</p>
+
+
+    <pre>int[] primes = { 2, 3, 5, 7, 11, 13, 17, 19 };</pre>
+
+
+    <p>you can say, equivalently,</p>
+
+
+    <pre>int[] primes = new int[] { 2, 3, 5, 7, 11, 17, 19 };</pre>
+
+
+    <p>In fact, rather than use a special notation that works only in the context
+        of declaration statements, I sometimes prefer to use the second form.</p>
+
+
+    <hr class="break">
+
+
+    <p>One final note: For historical reasons, an array declaration such as</p>
+
+
+    <pre>int[] list;</pre>
+
+
+    <p>can also be written as</p>
+
+
+    <pre>int list[];</pre>
+
+
+    <p>which is a syntax used in the languages C and C++. However, this alternative
+        syntax does not really make much sense in the context of Java, and it is
+        probably best avoided. After all, the intent is to declare a variable of a
+        certain type, and the name of that type is "<span class="atype">int[]</span>". It makes sense to
+        follow the "<span class="bnf">type-name</span> <span class="bnf">variable-name</span>;" syntax for such
+        declarations.</p>
+
+
+</div>
+<hr>
+<div align="right">
+    <small>
+        [ <a href="s2.html">Next Section</a> |
+        <a href="index.html">Chapter Index</a> |
+        <a href="../index.html">Main Index</a> ]
+    </small>
+</div>
+</body>
+</html>

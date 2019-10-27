@@ -1,0 +1,263 @@
+<html>
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Javanotes 7.0, Solution to Exercise 3, Chapter 7</title>
+    <link type="text/css" rel="stylesheet" href="../javanotes.css">
+</head>
+<body>
+<div align="right">
+    <small>
+        [ <a href="exercises.html">Exercises</a> |
+        <a href="index.html">Chapter Index</a> |
+        <a href="../index.html">Main Index</a> ]
+    </small>
+</div>
+<hr>
+<div class="content">
+    <h2>Solution for Programming Exercise 7.3</h2>
+    <hr class="break">
+    <p>
+        <span class="start"><big>T</big>his page contains</span> a sample solution to
+        one of the exercises from <a href="../index.html">Introduction to Programming Using Java</a>.</p>
+    <hr>
+    <h3 class="exercise">Exercise 7.3:</h3>
+    <p>In <a href="../c7/s4.html#arrays.4.4">Subsection&nbsp;7.4.4</a>, it is mentioned that the
+        standard sorting method <span class="code">Arrays.sort()</span> is much faster and efficient
+        than selection sort. Write a program to test this claim. To be specific, your
+        program should create a large array filled with random real numbers. It should
+        use both <span class="code">Arrays.sort()</span> and <span class="code">selectionSort()</span> to sort
+        the array, and it should time how long it takes to perform each sort. Furthermore,
+        it should do the same thing for a large array of random <span class="classname">Strings</span>.
+        To find the times, you can use <span class="code">System.currentTimeMillis()</span>
+        (see <a href="../c2/s3.html#basics.3.1">Subsection&nbsp;2.3.1</a> and the example <span class="sourceref"><a
+                href="../source/chapter2/TimedComputation.java">TimedComputation.java</a></span>).</p>
+
+    <hr>
+    <div class="exercisesubtitle" align="center">
+        <big><b>Discussion</b></big>
+    </div>
+    <hr>
+    <p>This exercise is most interesting for the results of the timing
+        experiments, but one point of interest is how to make a "random string." In my program,
+        I make a string containing uppercase letters, with a random length:</p>
+
+    <pre>private static String randomString() {
+    int length = 5 + (int)(21*Math.random());
+    StringBuilder str = new StringBuilder();
+    for (int i = 0; i &lt; length; i++) {
+        char ch = (char)('A' + (int)(26*Math.random())); // a random letter
+        str.append(ch);
+    }
+    return str.toString();
+}</pre>
+
+    <p>This method is then used to fill an array with random strings. I wrote methods for
+        creating random arrays of a given size. I used <span class="code">Arrays.copyOf()</span> to make
+        copies of the arrays. I need two copies of each random array, since I
+        want to apply <span class="code">selectionSort()</span> and <span class="code">Arrays.sort()</span> to identical
+        data.
+        So the arrays are created with</p>
+
+    <pre>numberList1 = randomNumbers(SIZE);
+numberList2 = Arrays.copyOf(numberList1, SIZE);
+stringList1 = randomStrings(SIZE);
+stringList2 = Arrays.copyOf(stringList1, SIZE);
+</pre>
+
+    <p>where <span class="code">SIZE</span> is a constant. (By using a constant here, I can easily adapt
+        the program to run with different array sizes.)</p>
+
+    <p>The selection sort algorithm is copied from <a href="../c7/s4.html#arrays.4.4">Subsection&nbsp;7.4.4</a>. We
+        actually need
+        two <span class="code">selectionSort</span> methods, one to sort numbers an one to sort strings.
+        You will see that my program includes tests of those methods. Without that test, I wouldn't
+        have been confident that my subroutines were sorting the arrays correctly.</p>
+
+    <p>The code for timing the sorting algorithms is straightforward.
+        Here are sort times from my program. Note that <span class="code">Arrays.sort()</span> is much faster than
+        <span class="code">selectionSort</span>. Also, it takes longer to sort strings that it takes to
+        sort numbers, since comparing two strings takes longer than comparing two numbers.
+        The advantage of <span class="code">Arrays.sort()</span> is greater for strings than it is for numbers.
+        I'm not sure why that happens.</p>
+
+    <pre>Milliseconds to sort 100000 numbers with selectionSort: 14299
+Milliseconds to sort 100000 numbers with Arrays.sort(): 79
+Milliseconds to sort 100000 strings with selectionSort: 251792
+Milliseconds to sort 100000 strings with Arrays.sort(): 216</pre>
+
+    <p>You can try running the program with different array sizes. A large difference is
+        noticeable even for arrays of size 1000, although all of the times are rather short in that
+        case. The advantage of <span class="code">Arrays.sort()</span> increases as the array size increases.</p>
+
+    <hr>
+    <div class="exercisesubtitle" align="center">
+        <big><b>The Solution</b></big>
+    </div>
+    <hr>
+
+    <pre class="exercisecode">import java.util.Arrays;
+
+public class SortExperiments {
+    
+    final static int SIZE = 100000; // The length of arrays that will be sorted.
+    
+    /**
+     * Creates a random string.  The length of the string is between 5 and 25,
+     * and it is made up of randomly selected uppercase letters.
+     */
+    private static String randomString() {
+        int length = 5 + (int)(21*Math.random());
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i &lt; length; i++) {
+            char ch = (char)('A' + (int)(26*Math.random()));
+            str.append(ch);
+        }
+        return str.toString();
+    }
+    
+    /**
+     * Creates an array of random real numbers.  The items in the array
+     * are random numbers in the range 0.0 to 1.0.
+     * @param count The length of the array that is created.
+     */
+    private static double[] randomNumbers(int count) {
+        double[] numbers = new double[count];
+        for (int i = 0; i &lt; count; i++)
+            numbers[i] = Math.random();
+        return numbers;
+    }
+    
+    /**
+     * Creates an array of random strings. The items in the
+     * array are created by calling the function randomString();
+     * @param count the size of the array that is created
+     */
+    private static String[] randomStrings(int count) {
+        String[] strings = new String[count];
+        for (int i = 0; i &lt; count; i++)
+            strings[i] = randomString();
+        return strings;
+    }
+    
+    /**
+     * Sort an array of real numbers using the selection sort algorithm.
+     */
+    private static void selectionSort(double[] numbers) {
+        for (int top = numbers.length-1; top &gt; 0; top-- ) {
+            int maxloc = 0;
+            for (int i = 1; i &lt;= top; i++) {
+                if (numbers[i] &gt; numbers[maxloc])
+                    maxloc = i;
+            }
+            double temp = numbers[top];
+            numbers[top] = numbers[maxloc];
+            numbers[maxloc] = temp;
+        }
+    }
+            
+    /**
+     * Sort an array of strings using the selection sort algorithm.
+     */
+    private static void selectionSort(String[] numbers) {
+        for (int top = numbers.length-1; top &gt; 0; top-- ) {
+            int maxloc = 0;
+            for (int i = 1; i &lt;= top; i++) {
+                if (numbers[i].compareTo(numbers[maxloc]) &gt; 0)
+                    maxloc = i;
+            }
+            String temp = numbers[top];
+            numbers[top] = numbers[maxloc];
+            numbers[maxloc] = temp;
+        }
+    }
+            
+    public static void main(String[] args) {
+        
+        long startTime;  // time when a sort begin.
+        long endTime;    // time when a sort ends.
+        
+        double[] numberList1;  // An array of random numbers.
+        double[] numberList2;  // A copy of numberList1.
+        
+        String[] stringList1;  // An array of random strings.
+        String[] stringList2;  // A copy of stringList1.
+        
+        /* Make sure the selection sort methods are correct.  The outputs
+           should be correctly sorted. */
+        
+        System.out.println("First, test that selection sort works on doubles.");
+        System.out.println("The 10 output numbers should be in increasing order.");
+        numberList1 = randomNumbers(10);
+        selectionSort(numberList1);
+        for (double n : numberList1)
+            System.out.println( "   " + n );
+        System.out.println();
+        
+        System.out.println("Next, test that selection sort works on strings.");
+        System.out.println("The 10 output strings should be in alphabetical order.");
+        System.out.println("(Also tests that random strings are made correctly.");
+        stringList1 = randomStrings(10);
+        selectionSort(stringList1);
+        for (String str : stringList1)
+            System.out.println( "   " + str );
+        System.out.println();
+        
+        System.out.println();
+        System.out.println("Times for sorting arrays of size " + SIZE + ":");
+        System.out.println();
+        
+        /* Create the arrays. */
+        
+        numberList1 = randomNumbers(SIZE);
+        numberList2 = Arrays.copyOf(numberList1, SIZE);
+        stringList1 = randomStrings(SIZE);
+        stringList2 = Arrays.copyOf(stringList1, SIZE);
+        
+        /* Do the sorts and output the times. */
+        
+        startTime = System.currentTimeMillis();
+        selectionSort(numberList1);
+        endTime = System.currentTimeMillis();
+        System.out.printf("Milliseconds to sort %d numbers with selectionSort: %d",
+                                SIZE, endTime-startTime);
+        System.out.println();
+        
+        startTime = System.currentTimeMillis();
+        Arrays.sort(numberList2);
+        endTime = System.currentTimeMillis();
+        System.out.printf("Milliseconds to sort %d numbers with Arrays.sort(): %d",
+                                SIZE, endTime-startTime);
+        System.out.println();
+        
+        startTime = System.currentTimeMillis();
+        selectionSort(stringList1);
+        endTime = System.currentTimeMillis();
+        System.out.printf("Milliseconds to sort %d strings with selectionSort: %d",
+                                SIZE, endTime-startTime);
+        System.out.println();
+        
+        startTime = System.currentTimeMillis();
+        Arrays.sort(stringList2);
+        endTime = System.currentTimeMillis();
+        System.out.printf("Milliseconds to sort %d strings with Arrays.sort(): %d",
+                                SIZE, endTime-startTime);
+        System.out.println();
+        System.out.println();
+        
+        
+    }
+
+}
+</pre>
+
+</div>
+<hr>
+<div align="right">
+    <small>
+        [ <a href="exercises.html">Exercises</a> |
+        <a href="index.html">Chapter Index</a> |
+        <a href="../index.html">Main Index</a> ]
+    </small>
+</div>
+</body>
+</html>

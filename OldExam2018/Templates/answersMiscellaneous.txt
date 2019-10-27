@@ -1,0 +1,15 @@
+    Name:
+    ID: 
+
+Answers Miscellaneous
+    
+    1. local variables:
+    
+    
+    2. number of Garden objects: 
+    
+    
+    3. (line numbers, explanations of error, and repairments)
+    
+    
+    4. number of calls to rhubarb: 

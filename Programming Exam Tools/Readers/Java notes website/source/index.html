@@ -1,0 +1,1055 @@
+<html>
+<head>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Javanotes Source Code</title>
+    <link type="text/css" rel="stylesheet" href="../javanotes.css">
+</head>
+<body>
+<div class="content">
+    <h3 align="center">Introduction to Programming Using Java, Seventh Edition</h3>
+    <h2 align="center">Source Code</h2>
+    <hr class="break">
+
+
+    <p>
+
+        <span class="start"><big>T</big>his page contains links</span> to the source code for
+
+        examples appearing in the free, on-line textbook <i>Introduction
+        to Programming Using Java,</i> Seventh Edition.
+        The <a href="../index.html">index&nbsp;page</a>
+
+        has links for downloading the entire web site. If you do that, you will find
+        the source code files in a directory named <i>sources</i>. There is also
+        a link for downloading just the source code.
+        <a href="../README-running-the-examples.txt">The&nbsp;README&nbsp;file</a> from the download includes some
+        instructions for compiling and running the programs.
+        Note however that some of these
+        examples depend on other source files, such as <span class="sourceref"><a href="chapter2/TextIO.java">TextIO.java</a></span>,
+        that are not built into Java. These are classes that I have written. All necessary files
+        are included in the downloads, and links to the individual files are provided below.</p>
+
+
+    <p>The solutions to end-of-chapter exercises are <b>not</b>
+        listed on this page. Each end-of-chapter
+        exercise has its own Web page, which
+        discusses its solution. The source code of a sample solution of each exercise
+        is given on the solution page for that exercise. If you want to compile
+        the solution, you should be able to cut-and-paste the solution out of a Web
+        browser window and into a text editing program. (You can't cut-and-paste from
+        the HTML source of the solution page, since it contains extra HTML markup
+        commands that the Java compiler won't understand; the HTML markup does
+        not appear when the page is displayed in a Web browser.)
+        Exercise solutions are also available as a download from the
+        front page of the web site. <a href="../README-exercise-solutions.txt">The&nbsp;README&nbsp;file</a>
+        from the download has more information.</p>
+
+
+    <hr class="break">
+    <h3 class="subsection_title">
+        <a name="source.1">Part 1: Text-oriented Examples</a>
+    </h3>
+
+
+    <p>Many of the sample programs in the text are based on console-style
+        input/output, where the computer and the user type lines of text back and forth
+        to each other. Some of these programs use the standard output object,
+        <span class="code">System.out</span>, for output. Many of them use my non-standard class,
+        <span class="classname">TextIO</span>, for input. For the programs that use <span
+                class="classname">TextIO</span>,
+        one of the files <span class="sourceref"><a href="chapter2/TextIO.java">TextIO.java</a></span> or TextIO.class
+        must
+        be available when you compile the program, and TextIO.class must be available
+        when you run the program. There is also a GUI version of TextIO;
+        you can find information about it at the end of this web page.</p>
+
+
+    <ul>
+
+        <li>
+            <span class="sourceref"><a href="chapter2/HelloWorld.java">HelloWorld.java</a></span>, from <a
+                href="../c2/s1.html">Section&nbsp;2.1</a>, a trivial program that does
+            nothing but print out the message, "Hello World!". A&nbsp;Hello World program is typically the first program
+            for someone learning a new programming language.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter2/Interest.java">Interest.java</a></span>, from <a
+                href="../c2/s2.html">Section&nbsp;2.2</a>, computes the interest on
+            a specific amount of money over a period of one year.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter2/TimedComputation.java">TimedComputation.java</a></span>, from <a
+                href="../c2/s3.html">Section&nbsp;2.3</a>,
+            demonstrates a few basic built-in subroutines and functions.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter2/EnumDemo.java">EnumDemo.java</a></span>, from <a
+                href="../c2/s3.html">Section&nbsp;2.3</a>, a <b>very</b> simple
+            first demonstration of enum types.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter2/PrintSquare.java">PrintSquare.java</a></span>, from <a
+                href="../c2/s4.html">Section&nbsp;2.4</a>, reads an integer
+            typed in by the user and prints the square of that integer. <b>This program depends on
+            <span class="sourceref"><a href="chapter2/TextIO.java">TextIO.java</a></span>. The same is true for almost
+            all of the programs in the
+            rest of this list.</b>
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter2/Interest2.java">Interest2.java</a></span>, from <a
+                href="../c2/s4.html">Section&nbsp;2.4</a>, calculates
+            interest on an investment for one year, based on user input. Uses <span class="classname">TextIO</span> for
+            user input.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter2/CreateProfile.java">CreateProfile.java</a></span>, from <a
+                href="../c2/s4.html">Section&nbsp;2.4</a>, a simple
+            demo of output to a file, using TextIO.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter2/Interest2WithScanner.java">Interest2WithScanner.java</a></span>,
+            from <a href="../c2/s4.html">Section&nbsp;2.4</a>, is a version
+            of <span class="sourceref"><a href="chapter2/Interest2.java">Interest2.java</a></span> that uses <span
+                class="classname">Scanner</span> instead of
+            <span class="classname">TextIO</span> to read input from the user.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter3/Interest3.java">Interest3.java"</a></span>, from <a
+                href="../c3/s1.html">Section&nbsp;3.1</a>, the first
+            example that uses control statements.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter3/ThreeN1.java">ThreeN1.java</a></span>, from <a
+                href="../c3/s2.html">Section&nbsp;3.2</a>, outputs a 3N+1 sequence
+            for a given stating value.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter3/ComputeAverage.java">ComputeAverage.java</a></span>, from <a
+                href="../c3/s3.html">Section&nbsp;3.3</a>, computes the average
+            value of some integers entered by the user.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter3/CountDivisors.java">CountDivisors.java</a></span>, from <a
+                href="../c3/s4.html">Section&nbsp;3.4</a>, counts the number of
+            divisors of an integer entered by the user.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter3/ListLetters.java">ListLetters.java</a></span>, from <a
+                href="../c3/s4.html">Section&nbsp;3.4</a>, lists all the distinct
+            letters in a string entered by the user.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter3/LengthConverter.java">LengthConverter.java</a></span>, from <a
+                href="../c3/s5.html">Section&nbsp;3.5</a>, converts length
+            measurements input by the user into different units of measure.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter3/ComputeAverage2.java">ComputeAverage2.java</a></span>, from <a
+                href="../c3/s7.html">Section&nbsp;3.7</a>, computes the average
+            value of some real numbers entered by the user. Demonstrates the use of <span class="code">try..catch</span>
+            for <span class="code">Double.parseDouble</span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a
+                    href="chapter3/AverageNumbersFromFile.java">AverageNumbersFromFile.java</a></span>, from <a
+                href="../c3/s7.html">Section&nbsp;3.7</a>, finds the sum
+            and the average of numbers read from a file. Demonstrates the use of <span class="code">try..catch</span>
+            statements with TextIO.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter3/BirthdayProblem.java">BirthdayProblem.java</a></span>, from <a
+                href="../c3/s8.html">Section&nbsp;3.8</a>, demonstrates
+            random access to array elements using the "birthday problem" (how many people do you have
+            to choose at random until two are found whose birthdays are on the same day of the year).
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter3/ReverseInputNumbers.java">ReverseInputNumbers.java</a></span>,
+            from <a href="../c3/s8.html">Section&nbsp;3.8</a>,
+            illustrates the use of a partially full array by reading some numbers
+            from the user and then printing them in reverse order.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter4/GuessingGame.java">GuessingGame.java</a></span>, from <a
+                href="../c4/s2.html">Section&nbsp;4.2</a>, lets the user
+            play guessing games where the computer picks a number and the user tries to guess it.
+            A slight variation of this program, which
+            reports the number of games won by the user, is <span class="sourceref"><a
+                href="chapter4/GuessingGame2.java">GuessingGame2.java</a></span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter4/RowsOfChars.java">RowsOfChars.java</a></span>, from <a
+                href="../c4/s3.html">Section&nbsp;4.3</a>, a rather useless
+            program in which one subroutine calls another.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter4/CopyTextFile.java">CopyTextFile.java</a></span>, from
+            <a href="../c4/s3.html">Section&nbsp;4.3</a>, demonstrates the use of command-line arguments by using
+            file names from the command line.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter4/ThreeN2.java">ThreeN2.java</a></span>, from <a
+                href="../c4/s4.html#subroutines.4.3">Subsection&nbsp;4.4.3</a>, is an improved
+            3N+1 program that uses subroutines and prints its output in neat columns.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter5/RollTwoPairs.java">RollTwoPairs.java</a></span>,
+            from <a href="../c5/s2.html#OOP.2.2">Subsection&nbsp;5.2.2</a>, uses <span class="sourceref"><a
+                href="chapter5/PairOfDice.java">PairOfDice.java</a></span>
+            to simulate rolling two pairs of dice until the same total is rolled on both pairs.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter5/HighLow.java">HighLow.java</a></span>, from <a
+                href="../c5/s4.html">Section&nbsp;5.4</a>, a simple card game.
+            It uses the classes <span class="sourceref"><a href="chapter5/Card.java">Card.java</a></span> and <span
+                class="sourceref"><a href="chapter5/Deck.java">Deck.java</a></span>, which are
+            given as examples of object-oriented programming. Also available, the card-related classes
+            <span class="sourceref"><a href="chapter5/Hand.java">Hand.java</a></span> and, from <a
+                href="../c5/s5.html#OOP.5.1">Subsection&nbsp;5.5.1</a>,
+            <span class="sourceref"><a href="chapter5/BlackjackHand.java">BlackjackHand.java</a></span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a
+                    href="chapter7/ReverseWithDynamicArray.java">ReverseWithDynamicArray.java</a></span>,
+            from <a href="../c7/s2.html">Section&nbsp;7.2</a>, reads
+            numbers from the user then prints them out in reverse order. It does this using the
+            class <span class="sourceref"><a href="chapter7/DynamicArrayOfInt.java">DynamicArrayOfInt.java</a></span>
+            as an example of using dynamic arrays. <span class="sourceref"><a href="chapter7/ReverseWithArrayList.java">ReverseWithArrayList.java</a></span>,
+            from <a href="../c7/s3.html">Section&nbsp;7.3</a>,
+            is functionally identical, but it uses an <span class="atype">ArrayList&lt;Integer&gt;</span>
+            instead of a <span class="classname">DynamicArrayOfInt</span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter7/SymmetricMatrix.java">SymmetricMatrix.java</a></span>,
+            from <a href="../c7/s5.html">Section&nbsp;7.5</a>, implements a symmetric 2D array of <span class="ptype">double</span>.
+            The program <span class="sourceref"><a href="chapter7/TestSymmetricMatrix.java">TestSymmetricMatrix.java</a></span>
+            tests the SymmetricMatrix class.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter8/LengthConverter2.java">LengthConverter2.java</a></span>,
+            from <a href="../c8/s2.html">Section&nbsp;8.2</a>,
+            converts measurements input by the user to inches, feet, yards, and miles.
+            This improvement on <span class="sourceref"><a href="chapter3/LengthConverter.java">LengthConverter.java</a></span>
+            allows inputs combining
+            several measurements, such as "3 feet 7 inches," and it detects illegal inputs.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter8/TryStatementDemo.java">TryStatementDemo.java</a></span>,
+            from <a href="../c8/s3.html">Section&nbsp;8.3</a>, a small demo program with a <span
+                class="code">try..catch</span>
+            statement that includes autoclosing of a resource.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter8/LengthConverter3.java">LengthConverter3.java</a></span>,
+            from <a href="../c8/s3.html">Section&nbsp;8.3</a>, is
+            a revision of the previous example that uses exceptions to handle errors in the
+            user's input.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter9/TowersOfHanoi.java">TowersOfHanoi.java</a></span>,
+            from <a href="../c9/s1.html">Section&nbsp;9.1</a>,
+            prints out the steps in a solution to the Towers of Hanoi problem; an example
+            of recursion.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter9/StringList.java">StringList.java</a></span>, from <a
+                href="../c9/s2.html">Section&nbsp;9.2</a>,
+            implements a linked list of strings. The program <span class="sourceref"><a href="chapter9/ListDemo.java">ListDemo.java</a></span>
+            tests this class.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter9/PostfixEval.java">PostfixEval.java</a></span>, from <a
+                href="../c9/s3.html">Section&nbsp;9.3</a>,
+            evaluates postfix expressions using a stack. Depends on the <span class="classname">StackOfDouble</span>
+            class defined in <span class="sourceref"><a href="chapter9/StackOfDouble.java">StackOfDouble.java</a></span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter9/SortTreeDemo.java">SortTreeDemo.java</a></span>, from <a
+                href="../c9/s4.html">Section&nbsp;9.4</a>,
+            demonstrates a binary sort tree of strings.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter9/SimpleParser1.java">SimpleParser1.java</a></span>,
+            <span class="sourceref"><a href="chapter9/SimpleParser2.java">SimpleParser2.java</a></span>, and
+            <span class="sourceref"><a href="chapter9/SimpleParser3.java">SimpleParser3.java</a></span>,
+            from <a href="../c9/s5.html">Section&nbsp;9.5</a>, are three programs that parse and evaluate
+            arithmetic expressions input by the user. SimpleParser1 only handles fully parenthesized expressions.
+            SimpleParser2 evaluates ordinary expressions where some parentheses can be omitted.
+            SimpleParser3 constructs expression trees to represent input expressions and uses
+            the expression trees to evaluate the expressions.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter10/WordListWithTreeSet.java">WordListWithTreeSet.java</a></span>,
+            from <a href="../c10/s2.html">Section&nbsp;10.2</a>,
+            makes an alphabetical list of words from a file. A <span class="classname">TreeSet</span>
+            is used to eliminate duplicates and sort the words.
+        </li>
+
+        <li>
+            <span class="sourceref"><a
+                    href="chapter10/WordListWithPriorityQueue.java">WordListWithPriorityQueue.java</a></span>, from <a
+                href="../c10/s2.html">Section&nbsp;10.2</a>,
+            makes an alphabetical list of words from a file. This is a small modification of the previous example
+            that uses a PriorityQueue instead of a TreeSet. The result is an alphabetical list of words in
+            which duplicates are <b>not</b> removed.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter10/SimpleInterpreter.java">SimpleInterpreter.java</a></span>, from
+            <a href="../c10/s4.html">Section&nbsp;10.4</a>,
+            demonstrates the use of a <span class="classname">HashMap</span> as a symbol table in a
+            program that interprets simple commands from the user.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter10/WordCount.java">WordCount.java</a></span>, from <a
+                href="../c10/s4.html">Section&nbsp;10.4</a>,
+            counts the number of occurrences of each word in a file. The program uses
+            several features from the Java Collection Framework.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter11/ReverseFile.java">ReverseFile.java</a></span>, from <a
+                href="../c11/s2.html">Section&nbsp;11.2</a>, shows how
+            to read and write files in a simple command-line application; uses the
+            non-standard class <span class="sourceref"><a href="chapter11/TextReader.java">TextReader.java</a></span>.
+            <span class="sourceref"><a
+                    href="chapter11/ReverseFileWithScanner.java">ReverseFileWithScanner.java</a></span>
+            is a version of the program that uses a <span class="classname">Scanner</span> instead of a
+            <span class="classname">TextReader</span>. And <span class="sourceref"><a
+                href="chapter11/ReverseFileWithResources.java">ReverseFileWithResources.java</a></span>
+            is a version that uses the "resource" pattern in <span class="code">try..catch</span> statements.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter11/DirectoryList.java">DirectoryList.java</a></span>, from <a
+                href="../c11/s2.html">Section&nbsp;11.2</a>, lists
+            the contents of a directory specified by the user; demonstrates the use of
+            the <span class="classname">File</span> class.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter11/CopyFile.java">CopyFile.java</a></span>, from <a
+                href="../c11/s3.html">Section&nbsp;11.3</a>, is a
+            program that makes a copy of a file, using file names that are given as command-line
+            arguments. <span class="sourceref"><a href="chapter11/CopyFileAsResources.java">CopyFileAsResources.java</a></span>
+            is a version of the program that also demonstrates uses the "resource" pattern in a
+            <span class="code">try..catch</span> statement.
+        </li>
+
+        <li>
+            <span class="sourceref"><a
+                    href="chapter11/PhoneDirectoryFileDemo.java">PhoneDirectoryFileDemo.java</a></span>, from <a
+                href="../c11/s3.html">Section&nbsp;11.3</a>, demonstrates
+            the use of a file for storing data between runs of a program.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter11/FetchURL.java">FetchURL.java</a></span>, from <a
+                href="../c11/s4.html">Section&nbsp;11.4</a>, reads and displays the contents
+            of a specified URL, if the URL refers to a text file.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter11/ShowMyNetwork.java">ShowMyNetwork.java</a></span>, mentioned in
+            <a href="../c11/s4.html">Section&nbsp;11.4</a>, is
+            a short program that prints information about each network interface on the computer
+            where it is run, including IP addresses associated with each interface.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter11/DateClient.java">DateClient.java</a></span> and
+            <span class="sourceref"><a href="chapter11/DateServer.java">DateServer.java</a></span>, from
+            <a href="../c11/s4.html">Section&nbsp;11.4</a>, are very simple first examples of network client and
+            server programs.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter11/CLChatClient.java">CLChatClient.java</a></span> and
+            <span class="sourceref"><a href="chapter11/CLChatServer.java">CLChatServer.java</a></span>, from
+            <a href="../c11/s4.html">Section&nbsp;11.4</a>, demonstrate two-way communication over a network by
+            letting users send messages back and forth; however, no threading is used and
+            the messages must strictly alternate.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter12/ThreadTest1.java">ThreadTest1.java</a></span>, from section <a
+                href="../c12/s1.html">Section&nbsp;12.1</a>,
+            runs one or more threads that all perform the same task, to demonstrate that they
+            run simultaneously and finish in an indeterminate order.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter12/ThreadTest2.java">ThreadTest2.java</a></span>, from section <a
+                href="../c12/s1.html">Section&nbsp;12.1</a>,
+            divides up a task (counting primes) among several threads, to demonstrate parallel
+            processing and the use of synchronization.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter12/DateServerWithThreads.java">DateServerWithThreads.java</a></span>
+            and
+            <span class="sourceref"><a href="chapter12/DateServerWithThreadPool.java">DateServerWithThreadPool.java</a></span>,
+            from <a href="../c12/s4.html">Section&nbsp;12.4</a>, are modifications of <span class="sourceref"><a
+                href="chapter11/DateServer.java">chapter11/DateServer.java</a></span>
+            (<a href="../c11/s4.html#IO.4.4">Subsection&nbsp;11.4.4</a>) that use threads to handle communication with
+            clients.
+            The first program creates a new thread for each connection. The second uses a thread
+            pool, and it uses a blocking queue to send connections from the main program to
+            the pool. The threaded servers will work with original client program,
+            <span class="sourceref"><a href="chapter11/DateClient.java">chapter11/DateClient.java</a></span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter12/CLMandelbrotMaster.java">CLMandelbrotMaster.java</a></span>,
+            <span class="sourceref"><a href="chapter12/CLMandelbrotWorker.java">CLMandelbrotWorker.java</a></span>,
+            and <span class="sourceref"><a href="chapter12/CLMandelbrotTask.java">CLMandelbrotTask.java</a></span>, from
+            <a href="../c12/s4.html">Section&nbsp;12.4</a>, are
+            a demonstration of distributed computing in which pieces of a large computation
+            are sent over a network to be computed by "worker" programs.
+        </li>
+
+    </ul>
+
+
+    <hr class="break">
+    <h3 class="subsection_title">
+        <a name="source.2">Part 2: Graphical Examples from the Text</a>
+    </h3>
+
+
+    <p>The following sample programs use a graphical user interface.</p>
+
+
+    <ul>
+
+        <li>
+            <span class="sourceref"><a href="chapter1/GUIDemo.java">GUIDemo.java</a></span> is a simple demonstration of
+            some basic
+            GUI components from the Swing graphical user interface library. It appears in
+            the text in <a href="../c1/s6.html">Section&nbsp;1.6</a>, but you won't be able to understand
+            it until you learn about GUI programming.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter3/RandomCircles.java">RandomCircles.java</a></span>, from <a
+                href="../c3/s9.html">Section&nbsp;3.9</a>,
+            draws a large number of randomly colored, randomly positioned disks. his simple graphics program is our
+            first
+            example of a GUI program.It is meant both as an introduction to graphics and as an example of using
+            control structures.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter3/MovingRects.java">MovingRects.java</a></span>, from <a
+                href="../c3/s9.html">Section&nbsp;3.9</a>,
+            draws a set of nested rectangles that seem to move infinitely towards the center.
+            Both this program and the previous one are based on
+            <span class="sourceref"><a
+                    href="chapter3/SimpleAnimationStarter.java">SimpleAnimationStarter.java</a></span>, which can
+            be used as a starting point for writing similar programs.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter4/RandomMosaicWalk.java">RandomMosaicWalk.java</a></span>, a
+            standalone
+            program that displays a window full of colored squares with a moving
+            disturbance, from <a href="../c4/s6.html">Section&nbsp;4.6</a>. This program depends on
+            <span class="sourceref"><a href="chapter4/MosaicPanel.java">MosaicPanel.java</a></span> and
+            <span class="sourceref"><a href="chapter4/Mosaic.java">Mosaic.java</a></span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter4/RandomMosaicWalk2.java">RandomMosaicWalk2.java</a></span>
+            is a version of the previous example,
+            modified to use a few named constants. From <a href="../c4/s7.html">Section&nbsp;4.7</a>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a
+                    href="chapter5/GrowingCircleAnimation.java">GrowingCircleAnimation.java</a></span>,
+            from <a href="../c5/s3.html">Section&nbsp;5.3</a>, shows an animation of growing, semi-transparent circles.
+            Requires
+            <span class="sourceref"><a href="chapter5/CircleInfo.java">CircleInfo.java</a></span>. Used as a simple
+            example of
+            programming with object.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter5/ShapeDraw.java">ShapeDraw.java</a></span>, from <a
+                href="../c5/s5.html">Section&nbsp;5.5</a>, is a program
+            that lets the user place various shapes on a drawing area; an example of
+            abstract classes, subclasses, and polymorphism.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter6/HelloWorldGUI1.java">HelloWorldGUI1.java</a></span>
+            and <span class="sourceref"><a href="chapter6/HelloWorldGUI2.java">HelloWorldGUI2.java</a></span>,
+            from <a href="../c6/s1.html">Section&nbsp;6.1</a>, show the message "Hello World" in a window, the first
+            one by using the built-in <span class="classname">JOptionPane</span> class and the second
+            by building the interface "by hand."
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter6/SimpleColorChooser.java">SimpleColorChooser.jav</a></span>, used
+            in <a href="../c6/s2.html">Section&nbsp;6.2</a>
+            to demonstrate RGB and HSB colors. This program uses techniques that are not
+            covered until later in the text, and it is not presented as a programming
+            example. You can run it to experiment with colors.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter6/RandomStringsPanel.java">RandomStringsPanel.java</a></span>,
+            from <a href="../c6/s2.html">Section&nbsp;6.2</a>, shows 25 copies of the string "Java!" (or some other
+            string
+            specified in it constructor) in random colors and fonts. The program
+            <span class="sourceref"><a href="chapter6/RandomStrings.java">RandomStrings.java</a></span> uses
+            a <span class="classname">RandomStringsPanel</span> as its content pane. And
+            <span class="sourceref"><a
+                    href="chapter6/RandomStringsPanelWithMain.java">RandomStringsPanelWithMain.java</a></span>
+            is a program that combines the <span class="code">main()</span> routine and the definition of the
+            panel into one file. Finally, <span class="sourceref"><a href="chapter6/ClickableRandomStrings.java">ClickableRandomStrings.java</a></span>
+            from <a href="../c6/s3.html">Section&nbsp;6.3</a> is a modification of <span
+                class="code">RandomStrings.java</span> with a mouse listener
+            that redraws the panel when the user clicks on it.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter6/SimpleStamper.java">SimpleStamper.java</a></span>, from <a
+                href="../c6/s3.html">Section&nbsp;6.3</a>,
+            lets the user place rectangles and ovals on a drawing area by clicking with the mouse.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter6/SimpleTrackMouse.java">SimpleTrackMouse.java</a></span>, from <a
+                href="../c6/s3.html">Section&nbsp;6.3</a>,
+            shows information about mouse events as the user moves and clicks with the mouse.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter6/SimplePaint.java">SimplePaint.java</a></span>, from <a
+                href="../c6/s3.html">Section&nbsp;6.3</a>,
+            lets the user draw curves in a drawing area and select the drawing color from a
+            palette.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter6/RandomArt.java">RandomArt.java</a></span>, from <a
+                href="../c6/s4.html">Section&nbsp;6.4</a>, shows
+            a new random "artwork" every four seconds. This is an example of using a <span
+                class="classname">Timer</span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter6/KeyboardAndFocusDemo.java">KeyboardAndFocusDemo.java</a></span>,
+            from <a href="../c6/s4.html">Section&nbsp;6.4</a>, shows
+            how to use keyboard and focus events.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter6/SubKiller.java">SubKiller.java</a></span>, from <a
+                href="../c6/s4.html">Section&nbsp;6.4</a>, lets the
+            user play a simple arcade-style game. Uses a timer as well as keyboard and focus events.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter6/SliderDemo.java">SliderDemo.java</a></span> and
+            <span class="sourceref"><a href="chapter6/TextAreaDemo.java">TextAreaDemo.java</a></span>,
+            small programs that demonstrate basic components, used as examples in <a href="../c6/s5.html">Section&nbsp;6.5</a>
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter6/BorderDemo.java">BorderDemo.java</a></span> and
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter6/BorderDemo.java">BorderDemo.java</a></span>,
+            from <a href="../c6/s6.html">Section&nbsp;6.6</a>, a very simple program that demonstrates six types of
+            border.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter6/SliderAndButtonDemo.java">SliderAndButtonDemo.java</a></span>,
+            from <a href="../c6/s6.html">Section&nbsp;6.6</a>,
+            shows how to create several components and lay them out in a <span class="classname">GridLayout</span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter6/SimpleCalc.java">SimpleCalc.java</a></span>, from <a
+                href="../c6/s6.html">Section&nbsp;6.6</a>, lets the
+            user add, subtract, multiply, or divide two numbers input by the user. A demo
+            of text fields, buttons, and layout with nested subpanels.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter6/NullLayoutDemo.java">NullLayoutDemo.java</a></span>, from <a
+                href="../c6/s6.html">Section&nbsp;6.6</a>, shows
+            how to lay out the components in a container for which the layout manager has been
+            set to <span class="code">null</span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter6/HighLowGUI.java">HighLowGUI.java</a></span>, from <a
+                href="../c6/s6.html">Section&nbsp;6.6</a>,
+            implements a GUI version of the card game
+            <span class="sourceref"><a href="chapter5/HighLow.java">HighLow.java</a></span>, in which the user sees a
+            playing card and guesses
+            whether the next card will be higher or lower in value. This program depends on
+            <span class="sourceref"><a href="chapter6/Card.java">Card.java</a></span>, <span class="sourceref"><a
+                href="chapter6/Hand.java">Hand.java</a></span>, and
+            <span class="sourceref"><a href="chapter6/Deck.java">Deck.java</a></span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter6/MosaicDraw.java">MosaicDraw.java</a></span>, from <a
+                href="../c6/s7.html">Section&nbsp;6.7</a>,
+            demonstrates menus and a color chooser dialog. This is used in a program where
+            the user colors the squares of a mosaic by clicking-and-dragging the mouse. It uses
+            <span class="sourceref"><a href="chapter6/MosaicPanel.java">MosaicPanel.java</a></span> to define the mosaic
+            panel itself,
+            and it uses <span class="sourceref"><a
+                href="chapter6/MosaicDrawController.java">MosaicDrawController.java</a></span>
+            to create the panel and menu bar and to handle events.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter6/SimpleDialogDemo.java">SimpleDialogDemo.java</a></span>, from <a
+                href="../c6/s7.html">Section&nbsp;6.7</a>,
+            is a small program that demonstrates <span class="classname">JColorChooser</span> and some
+            dialogs from <span class="classname">JOptionPane</span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a
+                    href="chapter7/RandomStringsWithArray.java">RandomStringsWithArray.java</a></span>,
+            from <a href="../c7/s2.html">Section&nbsp;7.2</a>,
+            shows multiple copies of a message in random colors, sizes, and positions. This is an
+            improved version of <span class="sourceref"><a href="chapter6/RandomStringsPanel.java">RandomStringsPanel.java</a></span>
+            that uses an
+            array to keep track of the data, so that the same picture can be redrawn whenever
+            necessary.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter7/SimplePaint2.java">SimplePaint2.java</a></span>, from <a
+                href="../c7/s3.html">Section&nbsp;7.3</a>, lets
+            the user draw colored curves and stores the data needed for repainting the
+            drawing surface in a list of type <span class="atype">ArrayList&lt;CurveData&gt;</span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter7/Life.java">Life.java</a></span>, from <a href="../c7/s5.html">Section&nbsp;7.5</a>,
+            implements John H. Conway's game of life and is an example of using 2D arrays. This program
+            depends on <span class="sourceref"><a href="chapter7/MosaicPanel.java">MosaicPanel.java</a></span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter7/Checkers.java">Checkers.java</a></span>, from <a
+                href="../c7/s5.html">Section&nbsp;7.5</a>, lets two
+            users play a game of checkers against each other. Illustrates the use of a
+            two-dimensional array and a variety of programming techniques.
+            (This is the longest program in the book so far, at over 700 lines!)
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter9/Maze.java">Maze.java</a></span> and
+            <span class="sourceref"><a href="chapter9/LittlePentominos.java">LittlePentominos.java</a></span>
+            are demo programs mentioned in <a href="../c9/s1.html">Section&nbsp;9.1</a> as examples of
+            recursion. They use techniques that have not covered until <a href="../c12/index.html">Chapter&nbsp;12</a>.
+            Note that LittlePentominos depends on <span class="sourceref"><a href="chapter9/MosaicPanel.java">MosaicPanel.java</a></span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter9/Blobs.java">Blobs.java</a></span>, from <a href="../c9/s1.html">Section&nbsp;9.1</a>,
+            uses recursion to count groups of colored squares in a grid.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter9/DepthBreadth.java">DepthBreadth.java</a></span>, from <a
+                href="../c9/s3.html">Section&nbsp;9.3</a>,
+            demonstrates stacks and queues.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter11/TrivialEdit.java">TrivialEdit.java</a></span>, from <a
+                href="../c11/s3.html">Section&nbsp;11.3</a>, lets
+            the user edit short text files. This program demonstrates reading and writing
+            files and using file dialogs.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter11/SimplePaintWithFiles.java">SimplePaintWithFiles.java</a></span>,
+            from <a href="../c11/s3.html">Section&nbsp;11.3</a>,
+            demonstrates saving data from a program to a file in both binary and character form. The
+            program is a simple sketching program based on <span class="sourceref"><a href="chapter7/SimplePaint2.java">SimplePaint2.java</a></span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter11/SimplePaintWithXML.java">SimplePaintWithXML.java</a></span>,
+            from <a href="../c11/s5.html">Section&nbsp;11.5</a>, demonstrate saving data from a program to a file in XML
+            format.
+            This program is a modification of <span class="sourceref"><a href="chapter11/SimplePaintWithFiles.java">SimplePaintWithFiles.java</a></span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter11/XMLDemo.java">XMLDemo.java</a></span>, from <a
+                href="../c11/s5.html">Section&nbsp;11.5</a>, is a simple
+            program that demonstrates basic parsing of an XML document and traversal of the Document Object
+            Model representation of the document. The user enters the XML to be parsed in
+            a text area.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter12/RandomArtWithThreads.java">RandomArtWithThreads.java</a></span>,
+            from <a href="../c12/s2.html">Section&nbsp;12.2</a>,
+            uses a thread to drive a very simple animation. Compare to <span class="sourceref"><a
+                href="chapter6/RandomArt.java">RandomArt.java</a></span>,
+            which does the same thing with a timer.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter12/QuicksortThreadDemo.java">QuicksortThreadDemo.java</a></span>,
+            from <a href="../c12/s2.html">Section&nbsp;12.2</a>,
+            demonstrates using a separate thread to perform a computation, with simple inter-thread
+            communication.
+        </li>
+
+        <li>
+            <span class="sourceref"><a
+                    href="chapter12/BackgroundComputationDemo.java">BackgroundComputationDemo.java</a></span>, from <a
+                href="../c12/s2.html">Section&nbsp;12.2</a>,
+            demonstrates using a thread running at a lower priority to perform a lengthy computation
+            in the background. <span class="sourceref"><a href="chapter12/BackgroundCompWithInvoke.java">BackgroundCompWithInvoke.java</a></span>
+            is very small modification of the same program that uses <span
+                class="code">SwingUtilities.invokeLater</span>
+            instead of synchronization. (The program computes a visualization of a small piece of the Mandelbrot
+            set, but the particular computation that is done is not important.)
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter12/MultiprocessingDemo1.java">MultiprocessingDemo1.java</a></span>,
+            from <a href="../c12/s2.html">Section&nbsp;12.2</a>,
+            is a modification of the previous example that uses several threads to perform the
+            background computation. This speeds up the computation on multi-processor machines.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter12/MultiprocessingDemo2.java">MultiprocessingDemo2.java</a></span>,
+            from <a href="../c12/s3.html">Section&nbsp;12.3</a>,
+            is a modification of the previous example that decomposes its task into a large number
+            of fairly small subtasks, in order to achieve better load balancing. The program
+            uses a thread pool and a queue of tasks.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter12/MultiprocessingDemo3.java">MultiprocessingDemo3.java</a></span>,
+            from <a href="../c12/s3.html">Section&nbsp;12.3</a>,
+            is yet another version of the previous examples. This one uses a pool of threads
+            that run forever, taking tasks from a queue and executing them. To make this possible,
+            a blocking queue is used, defined by the standard <span class="classname">LinkedBlockingQueue</span>
+            class. <span class="sourceref"><a href="chapter12/MyLinkedBlockingQueue.java">MyLinkedBlockingQueue.java</a></span>
+            is a simple example of
+            using <span class="code">wait()</span> and <span class="code">notify()</span> directly that can be used
+            as a replacement for <span class="classname">LinkedBlockingQueue</span> in
+            <span class="code">MultiprocessingDemo3</span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter12/TowersOfHanoiGUI.java">TowersOfHanoiGUI.java</a></span>, from <a
+                href="../c12/s3.html">Section&nbsp;12.3</a>,
+            shows an animation of the famous Towers Of Hanoi problem. The user can control
+            the animation with Run/Pause, Next, and StartAgain buttons. The program is
+            an example of using <span class="code">wait()</span> and <span class="code">notify()</span> directly
+            for communication between threads.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter12/GUIChat.java">GUIChat.java</a></span>, from <a
+                href="../c12/s4.html">Section&nbsp;12.4</a>, is a simple GUI program
+            for chatting between two people over a network. It demonstrates using a thread for
+            reading data from a network connection.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter12/netgame/common/">netgame.common</a></span>, from <a
+                href="../c12/s5.html">Section&nbsp;12.5</a>,
+            is a package that defines a framework for networked games. This framework is used in several
+            examples: A chat room, defined in package <span class="sourceref"><a href="chapter12/netgame/chat/">netgame.chat</a></span>;
+            a tic-tac-toe game, defined in package <span class="sourceref"><a href="chapter12/netgame/tictactoe">netgame.tictactoe</a></span>;
+            and a poker game, defined in package <span class="sourceref"><a href="chapter12/netgame/fivecarddraw/">netgame.fivecarddraw</a></span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter13/HighLowWithImages.java">HighLowWithImages.java</a></span>, from
+            <a href="../c13/s1.html">Section&nbsp;13.1</a>, is a
+            variation of <span class="sourceref"><a href="chapter6/HighLowGUI.java">HighLowGUI.java</a></span> that
+            takes playing card images from an
+            image file. Requires the image file <span class="sourceref"><a
+                href="chapter13/cards.png">cards.png</a></span> and depends on
+            <span class="sourceref"><a href="chapter13/Card.java">Card.java</a></span>, <span class="sourceref"><a
+                href="chapter13/Deck.java">Deck.java</a></span>,
+            and <span class="sourceref"><a href="chapter13/Hand.java">Hand.java</a></span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter13/PaintWithOffScreenCanvas.java">PaintWithOffScreenCanvas.java</a></span>,
+            from <a href="../c13/s1.html">Section&nbsp;13.1</a>, is a little
+            paint program that illustrates the use of a <span class="classname">BufferedImage</span> as
+            an off-screen canvas.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter13/SoundAndCursorDemo.java">SoundAndCursorDemo.java</a></span>, from
+            <a href="../c13/s1.html">Section&nbsp;13.1</a>, lets the user
+            play a few sounds and change the cursor by clicking some buttons. This demonstrates
+            using audio resource files and using an image resource to create a custom cursor. Requires
+            the resource files in the directory <span class="sourceref"><a
+                href="chapter13/snc_resources">snc_resources</a></span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter13/TransparencyDemo.java">TransparencyDemo.java</a></span>, from <a
+                href="../c13/s2.html">Section&nbsp;13.2</a>, demonstrates
+            using the alpha component of colors. It is also an example of using <span
+                class="classname">FontMetrics</span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter13/StrokeDemo.java">StrokeDemo.java</a></span>, from <a
+                href="../c13/s2.html">Section&nbsp;13.2</a>, demonstrates the
+            use of various <span class="classname">BasicStrokes</span> for drawing lines and rectangles.
+            Also demonstrates antialiasing.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter13/PaintDemo.java">PaintDemo.java</a></span>, from <a
+                href="../c13/s2.html">Section&nbsp;13.2</a>, demonstrates
+            using a <span class="classname">GradientPaint</span> and using a <span class="classname">TexturePaint</span>
+            to fill a polygon. Uses the image resource files <span class="sourceref"><a href="chapter13/TinySmiley.png">TinySmiley.png</a></span>
+            and <span class="sourceref"><a href="chapter13/QueenOfHearts.png">QueenOfHearts.png</a></span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter13/ChoiceDemo.java">ChoiceDemo.java</a></span>, discussed in <a
+                href="../c13/s3.html">Section&nbsp;13.3</a>, demonstrates
+            radio buttons, combo boxes, and Actions.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter13/ToolBarDemo.java">ToolBarDemo.java</a></span>, from <a
+                href="../c13/s3.html">Section&nbsp;13.3</a>, uses a <span class="classname">JToolBar</span>
+            that holds a group of 3 radio buttons and a push button. All the buttons use custom
+            icons, and the push button is created from an <span class="classname">Action</span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter13/SillyStamper.java">SillyStamper.java</a></span>, from <a
+                href="../c13/s4.html">Section&nbsp;13.4</a>, demonstrates using
+            a <span class="classname">JList</span> of <span class="classname">Icons</span>. The user can "stamp" images
+            of a selected icon onto a drawing area. This program uses the icon images in the
+            directory <span class="sourceref"><a href="chapter13/stamper_icons">stamper_icons</a></span> as resources.
+        </li>
+
+        <li>
+            <span class="sourceref"><a
+                    href="chapter13/StatesAndCapitalsTableDemo.java">StatesAndCapitalsTableDemo.java</a></span>, from <a
+                href="../c13/s4.html">Section&nbsp;13.4</a>, is
+            a completely trivial demo of a <span class="classname">JTable</span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter13/ScatterPlotTableDemo.java">ScatterPlotTableDemo.java</a></span>,
+            from <a href="../c13/s4.html">Section&nbsp;13.4</a>, uses
+            a <span class="classname">TableModel</span> to customize a <span class="classname">JTable</span>.
+            The table is a list of xy-points that the user can edit. A scatter plot of the
+            points is displayed.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter13/SimpleWebBrowser.java">SimpleWebBrowser.java</a></span> and
+            <span class="sourceref"><a
+                    href="chapter13/SimpleWebBrowserWithThread.java">SimpleWebBrowserWithThread.java</a></span>,
+            from <a href="../c13/s4.html">Section&nbsp;13.4</a>, implement a simple web browser using <span
+                class="classname">JEditorPane</span>
+            (which is ridiculously easy). The difference between the programs is that the first
+            loads documents synchronously, which can hang the program in an unpleasant way, while
+            the second uses a thread to load documents asynchronously.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter13/SimpleRTFEdit.java">SimpleRTFEdit.java</a></span>, mentioned but
+            just barely discussed
+            in <a href="../c13/s4.html">Section&nbsp;13.4</a>, lets the user edit RTF files, which are text files in
+            a format that include style information such as bold and italics. This is mainly a simple
+            demo of using <span class="classname">Actions</span> defined by "editor kits."
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter13/StopWatchLabel.java">StopWatchLabel.java</a></span>
+            and <span class="sourceref"><a href="chapter13/MirrorText.java">MirrorText.java</a></span>, from
+            <a href="../c13/s4.html">Section&nbsp;13.4</a>, are classes that implement custom components.
+            <span class="sourceref"><a href="chapter13/CustomComponentTest.java">CustomComponentTest.java</a></span> is
+            a program that tests them.
+        </li>
+
+        <li>The Mandelbrot program from <a href="../c13/s5.html">Section&nbsp;13.5</a>, which computes and
+            displays visualizations of the Mandelbrot set, is defined by several classes in the
+            package <span class="code">edu.hws.eck.mdb</span>. The source code files can be found in
+            the directory <span class="sourceref"><a href="chapter13/edu/hws/eck/mdb">edu/hws/eck/mdb</a></span>.
+        </li>
+
+    </ul>
+
+
+    <hr class="break">
+    <h3 class="subsection_title">
+        <a name="source.3">Part 3: Auxiliary Files</a>
+    </h3>
+
+
+    <p>This section lists some of the extra source files that are required by
+        various examples in the previous sections. The files listed here
+        are those which are general enough to be potentially useful in
+        other programming projects. Links to these files are also given above,
+        along with the programs that use them.</p>
+
+
+    <ul>
+
+        <li>
+            <span class="sourceref"><a href="chapter2/TextIO.java">TextIO.java</a></span> defines a class containing
+            some
+            static methods for doing input/output. These methods make it easier to use the
+            standard input and output streams, <span class="code">System.in</span> and <span
+                class="code">System.out</span>.
+            <span class="classname">TextIO</span> also supports other input sources and output destinations,
+            such as files. The
+            <span class="classname">TextIO</span> class defined by this file is only useful in a command-line
+            environment, and it might be inconvenient to use in integrated development environments such
+            as Eclipse in which standard input does not work particularly well. In that case, you might want to use
+            the following file instead.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="textiogui/TextIO.java">textiogui/TextIO.java</a></span>, a GUI version of
+            TextIO that opens
+            a window where TextIO I/O operations are performed. This is part of a package
+            named <span class="code">textiogui</span> to distinguish it from the normal TextIO. A companion
+            class in that package, <span class="sourceref"><a
+                href="textiogui/System.java">textiogui/System.java</a></span>, is a fake System
+            class that makes it possible to use <span class="code">System.out</span> and other features
+            of <span class="classname">System</span> in the same window. I use these classes to build
+            executable jar files for my text-oriented examples that run in a window instead of
+            on the command line. See the comments in the source code files for more information.
+        </li>
+
+        <li>
+            <span class="sourceref"><a
+                    href="chapter3/SimpleAnimationStarter.java">SimpleAnimationStarter.java</a></span> is
+            a small class that you can edit to make very simple animations, in which every frame
+            is drawn using basic drawing commands. This was used in <a href="../c3/index.html">Chapter&nbsp;3</a>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter4/Mosaic.java">Mosaic.java</a></span> contains
+            subroutines for opening and controlling a
+            window that contains a grid of colored rectangles.
+            It depends on <span class="sourceref"><a href="chapter4/MosaicPanel.java">MosaicPanel.java</a></span>.
+            This is a toolbox for writing simple stand-alone applications that use a "mosaic window."
+            It is used in several examples and exercises in <a href="../c4/index.html">Chapter&nbsp;4</a>
+            and <a href="../c6/index.html">Chapter&nbsp;6</a>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter4/MosaicPanel.java">chapter4/MosaicPanel.java</a></span> defines a
+            subclass of JPanel that shows little
+            rectangles arranged in rows and columns, with many options.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter5/StatCalc.java">StatCalc.java</a></span> is a simple
+            class that computes some statistics of a set of numbers. It is used only
+            for a couple exercises in <a href="../c5/index.html">Chapter&nbsp;5</a> and
+            <a href="../c6/index.html">Chapter&nbsp;6</a>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter8/Expr.java">Expr.java</a></span> defines a class <span
+                class="classname">Expr</span> that
+            represent mathematical expressions involving the variable <span class="code">x</span>. It is used only
+            in a couple of the exercises in <a href="../c8/index.html">Chapter&nbsp;8</a>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter11/TextReader.java">TextReader.java</a></span>, from
+            <a href="../c11/s1.html#IO.1.4">Subsection&nbsp;11.1.4</a>, for reading character data from input streams.
+            Input methods
+            in an object of type <span class="classname">TextReader</span> are similar to the static input
+            methods in <span class="classname">TextIO</span>.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter12/netgame/common/">netgame.common</a></span> is a package that
+            defines a
+            framework for networked games, which is discussed in detail in <a
+                href="../c12/s5.html">Section&nbsp;12.5</a>.
+            The netgame packages also includes several examples.
+        </li>
+
+        <li>
+            <span class="sourceref"><a href="chapter12/netgame/fivecarddraw/PokerRank.java">PokerRank.java</a></span>
+            can be
+            used to assign ranks to hands of cards in poker games. The cards are defined
+            in the class <span class="sourceref"><a
+                href="chapter12/netgame/fivecarddraw/PokerCard.java">PokerCard.java</a></span>.
+            There is also a <span class="sourceref"><a href="chapter12/netgame/fivecarddraw/PokerDeck.java">PokerDeck.java</a></span>
+            All of these classes are part of the package <span class="sourceref"><a
+                href="chapter12/netgame/fivecarddraw/">netgame.fivecarddraw</a></span>,
+            which is discussed in <a href="../c12/s5.html#threads.5.4">Subsection&nbsp;12.5.4</a>, but these classes can
+            be used independently
+            of the netgame framework.
+        </li>
+
+    </ul>
+
+
+</div>
+<hr>
+<div align="right">
+    <small><a href="http://math.hws.edu/eck/index.html">David Eck</a>, August 2014</small>
+</div>
+</body>
+</html>
