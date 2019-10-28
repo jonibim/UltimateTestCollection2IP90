@@ -7,8 +7,8 @@ public class Misc2015V2 {
      * True or False?
      * There can be only one method nemed foo in a class
      *
-     * False. There can be many methods called as long
-     * they share different parameters
+     * False.There can be many methods called foo as long as
+     * they have a different signature name + parameter list.
      *
      * ==================
      *
@@ -19,6 +19,29 @@ public class Misc2015V2 {
      *
      * False. There can be many variables x in a class
      * inside different functions
+     *
+     * Example below v v v v
+     *
+     */
+
+    class VariableExample {
+        void run() {
+            int x;
+        }
+
+        void example() {
+            int x;
+        }
+
+        boolean isTrue() {
+            boolean x = false;
+            return x;
+        }
+    }
+
+    /*
+     *
+     *
      *
      * ===================
      *
