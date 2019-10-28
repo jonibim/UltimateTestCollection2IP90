@@ -151,8 +151,6 @@ class BlinkingBall extends Baall {
 //SOME SMALL ADDITIONS. THE IDEOLOGY BEHIND THIS WOULD BE THE
 //THE SAME IF WE WOULD APPLY THIS TO THE WHOLE PROJECT
 
-//TODO
-// Check the work, Elaborate more, Make it more advanced
 class BouncingBall extends Baall {
     int fallStepX = 20;
 
