@@ -1,0 +1,29 @@
+    Name: Niels Gorter
+    ID: 1332678
+    Date: 30/10/2018
+
+Answers Miscellaneous
+    
+    1. local variables: height, width, r, c
+    
+    
+    2. number of Garden objects: 2
+    
+    
+    3. (line numbers, explanations of error, and repairments)
+	a.
+	At line 2 it says:
+		if(s=="") {
+	this is incorrect, as you can't compare 
+	strings using ==, to fix this write: 
+		if(s.equals("")) {
+
+	b.
+	At line 5 it says:
+		return s.substring(s.length-1,s.length)
+	this is incorrect, as you can't use .length with strings,
+	instead you use .length(), so to fix this write:
+		return s.substring(s.length()-1,s.length())
+    
+    
+    4. number of calls to rhubarb: 15

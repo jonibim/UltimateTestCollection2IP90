@@ -140,13 +140,13 @@ class ChameleonBall extends Ball{
     @Override
     public void draw( Graphics g ) {
         g.setColor( color );
-        g.fillRoundRect(x - size/2, y - size/2, size, size,10,10);
-        g.drawRoundRect(x - size/2, y - size/2, size, size,10,10);
+        g.fillOval(x - size / 2, y - size / 2, size, size);
+        //g.drawRoundRect(x - size/2, y - size/2, size, size,10,10);
     }
 
     @Override
     public void kick() {
-        color = someColors[r.nextInt(5)];
+        color = someColors[r.nextInt(someColors.length)];
     }
 
 }
