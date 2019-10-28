@@ -103,9 +103,6 @@ public class Miscellaneous2015 {
         }
     }
 
-    //TODO
-    // Check this answer
-
     /*
      * The local variables are:
      * int x, int i, String p
