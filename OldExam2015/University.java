@@ -102,5 +102,62 @@ class Room {
     public void leave(User user) {
         visitors.remove(user);
     }
+
+    boolean hasLecture() {
+        for (int i = 0; i < visitors.size(); i++) {
+            if (visitors.get(i).isLecturer()) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+class Professor extends Employee implements User {
+
+    Professor(String name) {
+        super(name);
+    }
+
+    @Override
+    public boolean isLecturer() {
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Prof. " + super.toString();
+    }
+}
+
+class Student implements User {
+    String name;
+    int id;
+
+    public Student(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    @Override
+    public boolean isLecturer() {
+        return false;
+    }
+}
+
+class Building {
+    String name;
+    Room hallway;
+    Room[] rooms;
+
+    public Building(String name, Room[] rooms) {
+        this.name = name;
+        this.rooms = rooms;
+        hallway = rooms[0];
+    }
+
+    void moveUser(User user, Room room, boolean isEntering) {
+
+    }
 }
 

@@ -1,0 +1,4 @@
+Question answers
+    7. c //Room doesn't currently have lightswitches, it's toString method should be changed to account for switches
+    8. d //Professor uses the toString from Employee, which includes (tu/e)
+    9. b
