@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+
+class Room {
+    ArrayList<User> visitors;
+    String name;
+
+    public Room(String name) {
+        this.name = name;
+        visitors = new ArrayList<User>();
+    }
+
+    @Override
+    public String toString() {
+        String result;
+        result = "Room: " + name + "\n";
+        if (visitors.isEmpty()) {
+            result += "Currently no visitors.\n";
+        } else {
+            result += "Current visitors: ";
+            for (User u : visitors) {
+                result += u.toString() + "  ";
+            }
+            result += "\n";
+        }
+        return result;
+    }
+
+    // assume user is not in room
+    public void enter(User user) {
+        visitors.add(user);
+    }
+
+    // assume user is in room
+    public void leave(User user) {
+        visitors.remove(user);
+    }
+
+    boolean hasLecture() {
+        for (int i = 0; i < visitors.size(); i++) {
+            if (visitors.get(i).isLecturer()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+}

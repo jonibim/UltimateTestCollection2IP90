@@ -1,0 +1,19 @@
+class Student implements User {
+    String name;
+    int id;
+
+    public Student(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    @Override
+    public boolean isLecturer() {
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return name + " ID: " + id;
+    }
+}

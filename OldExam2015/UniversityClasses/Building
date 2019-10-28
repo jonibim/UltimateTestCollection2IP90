@@ -1,0 +1,61 @@
+class Building {
+    String name;
+    Room hallway;
+    Room[] rooms;
+
+    Building(String name, Room[] rooms) {
+        this.name = name;
+        hallway = rooms[0];
+        this.rooms = rooms;
+
+    }
+
+    void moveUser(User user, Room room, boolean isEntering) {
+        //check if the user is a lecture and the room is not the hallway
+        //we need to check if the room already has a lecturer
+        if (user.isLecturer() && !(rooms.equals(hallway))) {
+            for (int i = 0; i < room.visitors.size(); i++) {
+                if (room.visitors.get(i).isLecturer()) {
+                    System.out.println("There is already an Lecturer in the room");
+                    return;
+                }
+            }
+        }
+
+        //check if the user is leaving the building
+        if (room == hallway && !isEntering) {
+            room.visitors.remove(user);
+            System.out.println("User left the building");
+            return;
+        }
+
+        //check if the user is entering the building
+        if (room == hallway) {
+            room.visitors.add(user);
+            System.out.println("User entered building");
+            return;
+        }
+
+        //add a user to a room
+        if (isEntering) {
+            room.visitors.add(user);
+            return;
+        }
+
+        //remove the user from a room
+        if (!isEntering) {
+            room.visitors.remove(user);
+            return;
+        }
+    }
+
+    @Override
+    public String toString() {
+        String displayRoom = "";
+        for (int i = 0; i < rooms.length; i++) {
+            displayRoom += rooms[i].toString();
+        }
+        return "Building: " + name + "\n" + displayRoom;
+    }
+}
+
