@@ -7,5 +7,3 @@ Now included on these collections are the Exam Tools shared by Maxim and the sol
 An Index/"Table of Contents" is available at the first page by the name "Overview of all exams with their exercises" in both .txt, .docx and .PDF , provided by Isabel.
 
  -- Joni
-
-### P.S: Also the repo is still WIP as I am still working on some tests. But is mostly 80% done right now
