@@ -133,7 +133,7 @@ public class Misc2017V2 {
      * The holes are marked with A, B, C, and D. Complete it by mentioning
      * for each of the holes what should be filled in there. In hole A you
      * should fill in the minimal condition on the parameters under
-     * which the method works correctly.
+     * which the method works correctly. Check PDF for the template exercise.
      *
      */
 
