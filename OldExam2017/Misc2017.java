@@ -8,8 +8,8 @@ public class Misc2017 {
      * There can be only one method named 'donald'?
      *
      * False.
-     * There can be multiple methods called donald,
-     * if they have different parameters.
+     * There can be many methods called foo as long as
+     * they have a different signature name + parameter list
      *
      * ============================================
      *
@@ -18,6 +18,18 @@ public class Misc2017 {
      * When a variable a is declared with A 'a' and a method m
      * with void m(B b), under what conditions will the call m(a)
      * compile?
+     *
+     * Short answer (Thank you Martin!)
+     *
+     * Scenario #1
+     * A and B are primitive types so we
+     *  can have a being upcasted to B
+     *
+     * Scenario #2
+     * A and B are reference types (objects) so either
+     * A has to be a subclass of B
+     *
+     * Long answer with explanation (can be confusing):
      *
      * It will compile according to these two scenarios, either method
      * should share the same type for A and B , such as for example
@@ -31,6 +43,8 @@ public class Misc2017 {
      * A a = new A();
      *
      *
+     *
+     *
      * ==============================================
      *
      * 1.3
@@ -41,6 +55,24 @@ public class Misc2017 {
      * segsum(a, 2, 4) will return 13
      * v v v v v v v v v v v v v v v v v v v v v v v v
      */
+
+    //Clean and Short Answer 1
+    double sumClean(double[] a, int from, int to) {
+        if (a.length == 0) {
+            return 0;
+        }
+
+        if (from == to - 1) {
+            return a[from];
+        }
+
+        return sum(a, from + 1, to) + a[from];
+
+    }
+
+    //Long answer with unneeded variables
+    // This can help you to understand what's
+    // happening in the recursion
 
     double sum(double[] a, int from, int to){
         int sum=0;
@@ -59,8 +91,6 @@ public class Misc2017 {
 
     }
 
-    //TODO
-    // check your work
 
     /* ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^  ^
      *===============================================
