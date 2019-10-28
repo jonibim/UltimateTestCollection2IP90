@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
     //TODO
-    // Complete the assigment
+// Complete the assigment Need clarification
 
     interface User {
         public boolean isLecturer();
