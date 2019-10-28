@@ -17,7 +17,8 @@ public class Misc2017V2 {
      * There can be only one local variable named x
      * in a class
      *
-     * True
+     * False. There can be many variables x in a class
+     * inside different functions
      *
      * =============================
      *
