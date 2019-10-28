@@ -13,9 +13,9 @@ class BuildingTest {
         corridor[1] = r83;
         corridor[2] = r3;
 
-        //Building metaforum = new Building( "Metaforum", corridor );
+        Building metaforum = new Building("Metaforum", corridor);
 
-        /*
+
 
         User pwop = new Professor( "Pollewop" );
         User fat = new Student( "Fatima", 798 );
@@ -34,7 +34,6 @@ class BuildingTest {
         // again, let's have a look at Marauder's Map
         System.out.println( metaforum ); // will call metaforum.toString()
 
-         */
     }
 
     public static void main(String[] a) {
@@ -111,6 +110,7 @@ class Room {
         }
         return false;
     }
+
 }
 
 class Professor extends Employee implements User {
@@ -143,6 +143,11 @@ class Student implements User {
     public boolean isLecturer() {
         return false;
     }
+
+    @Override
+    public String toString() {
+        return name + " ID: " + id;
+    }
 }
 
 class Building {
@@ -150,14 +155,59 @@ class Building {
     Room hallway;
     Room[] rooms;
 
-    public Building(String name, Room[] rooms) {
+    Building(String name, Room[] rooms) {
         this.name = name;
-        this.rooms = rooms;
         hallway = rooms[0];
+        this.rooms = rooms;
+
     }
 
     void moveUser(User user, Room room, boolean isEntering) {
+        //check if the user is a lecture and the room is not the hallway
+        //we need to check if the room already has a lecturer
+        if (user.isLecturer() && !(rooms.equals(hallway))) {
+            for (int i = 0; i < room.visitors.size(); i++) {
+                if (room.visitors.get(i).isLecturer()) {
+                    System.out.println("There is already an Lecturer in the room");
+                    return;
+                }
+            }
+        }
 
+        //check if the user is leaving the building
+        if (room == hallway && !isEntering) {
+            room.visitors.remove(user);
+            System.out.println("User left the building");
+            return;
+        }
+
+        //check if the user is entering the building
+        if (room == hallway) {
+            room.visitors.add(user);
+            System.out.println("User entered building");
+            return;
+        }
+
+        //add a user to a room
+        if (isEntering) {
+            room.visitors.add(user);
+            return;
+        }
+
+        //remove the user from a room
+        if (!isEntering) {
+            room.visitors.remove(user);
+            return;
+        }
+    }
+
+    @Override
+    public String toString() {
+        String displayRoom = "";
+        for (int i = 0; i < rooms.length; i++) {
+            displayRoom += rooms[i].toString();
+        }
+        return "Building: " + name + "\n" + displayRoom;
     }
 }
 
