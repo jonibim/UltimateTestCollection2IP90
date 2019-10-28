@@ -154,7 +154,7 @@ class BlinkingBall extends Baall {
 //TODO
 // Check the work, Elaborate more, Make it more advanced
 class BouncingBall extends Baall {
-    Random r = new Random();
+    int fallStepX = 20;
 
     public BouncingBall(int x, int y) {
         super(x, y);
@@ -168,6 +168,16 @@ class BouncingBall extends Baall {
         if (y < 20) {
             fallStep = -fallStep;
         }
+
+        if (x < 40) {
+            fallStepX = -fallStepX;
+        }
+
+        if (x > 550) {
+            fallStepX = -fallStepX;
+        }
+
+        x += fallStepX;
         super.step();
     }
 }
