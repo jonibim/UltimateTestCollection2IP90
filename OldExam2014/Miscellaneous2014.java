@@ -59,11 +59,11 @@ public class Miscellaneous2014 {
     }
 
     /*
-     * By removing the if statment, the boolean result
-     * will be asigneed to the result of the condition
+     * By removing the if statement, the boolean result
+     * will be assigned to the result of the condition
      * specified for each element in the array
      * This means that the final value for the boolean result
-     * would be depneded by the last number in the array
+     * would be depended by the last number in the array
      * If the last number is not zero, but there are other zeros
      * scattered in the array, the return boolean value would
      * be false
@@ -104,7 +104,7 @@ public class Miscellaneous2014 {
     }
     static class SquareDemo {
         void demo() {
-            Square mySquare = new Square(); //initalize the variable
+            Square mySquare = new Square(); //initialize the variable
             mySquare.setSize( 5 );
             System.out.println( mySquare.getArea() );
         }
@@ -134,8 +134,6 @@ public class Miscellaneous2014 {
         }
     }
 
-    //TODO
-    // Check this answer
 
     /*
      * The local variables for this program are
@@ -143,6 +141,11 @@ public class Miscellaneous2014 {
      * grades, title;
      * Inside the method accessible only:
      * grade, i (from the for element)
+     *
+     * Parameters (threshold) may also be counted as local variables
+     * but the exercise is ambiguous if we should either count those
+     * as local variables or not
+     *
      */
 
 
