@@ -15,7 +15,6 @@
       <sourceFolder url="file://$MODULE_DIR$/OldExam2016" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/OldExam2015_V2" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/OldExam2017_V2" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/OldExam2018_V2" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/OldExam2013_V2" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/OldExam2013/Solutions" />
       <excludeFolder url="file://$MODULE_DIR$/OldExam2013/Templates" />
@@ -25,6 +24,7 @@
       <excludeFolder url="file://$MODULE_DIR$/OldExam2014/Templates" />
       <excludeFolder url="file://$MODULE_DIR$/OldExam2015/Solutions" />
       <excludeFolder url="file://$MODULE_DIR$/OldExam2015/Templates" />
+      <excludeFolder url="file://$MODULE_DIR$/OldExam2015/UniversityClasses" />
       <excludeFolder url="file://$MODULE_DIR$/OldExam2015_V2/Solutions" />
       <excludeFolder url="file://$MODULE_DIR$/OldExam2015_V2/Templates" />
       <excludeFolder url="file://$MODULE_DIR$/OldExam2016/Solutions" />

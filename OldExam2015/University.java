@@ -1,8 +1,5 @@
 import java.util.ArrayList;
 
-//TODO
-// Complete the assigment Need clarification
-
 class BuildingTest {
     void demo() {
         Room[] corridor = new Room[3];
@@ -40,7 +37,6 @@ class BuildingTest {
         (new BuildingTest()).demo();
     }
 }
-
 
 interface User {
     public boolean isLecturer();
