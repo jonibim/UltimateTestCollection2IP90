@@ -5,8 +5,7 @@
 
 /* Don't make your lines longer than this one *********************************/
 
-//TODO
-// Add bounciness at the end of the screen
+
 import java.util.*;
 import java.awt.*;
 import javax.swing.*;
@@ -51,6 +50,7 @@ class BallroomPanel extends JPanel implements ActionListener {
     balls.add( new Baall( 100, 10 ));
     balls.add( new RedBall( 540, 10 ));
     balls.add( new BlinkingBall( 310 , 10 ));
+      balls.add(new BouncingBall(50, 50));
   }
 
   public void paintComponent( Graphics g ) {
@@ -142,6 +142,33 @@ class BlinkingBall extends Baall {
         // draw ball
         g.setColor( ballColor );
         g.fillOval( x - radius/2, y - radius/2, radius, radius );
+    }
+}
+
+//PLEASE NOTE THAT THIS SHOULD BE DONE IN A SEPERATE FOLDER
+//BUT FOR SAKE OF SIMPLICITY AND IN ORDER TO AVOID A MESS OF
+//FOLDERS AND PROJECTS I WILL DO IT IN ONE SIMPLE CLASS WITH
+//SOME SMALL ADDITIONS. THE IDEOLOGY BEHIND THIS WOULD BE THE
+//THE SAME IF WE WOULD APPLY THIS TO THE WHOLE PROJECT
+
+//TODO
+// Check the work, Elaborate more, Make it more advanced
+class BouncingBall extends Baall {
+    Random r = new Random();
+
+    public BouncingBall(int x, int y) {
+        super(x, y);
+    }
+
+    @Override
+    void step() {
+        if (y > 330) {
+            fallStep = -fallStep;
+        }
+        if (y < 20) {
+            fallStep = -fallStep;
+        }
+        super.step();
     }
 }
 
