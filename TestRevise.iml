@@ -16,6 +16,7 @@
       <sourceFolder url="file://$MODULE_DIR$/OldExam2015_V2" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/OldExam2017_V2" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/OldExam2013_V2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/OldExam2019V2" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/OldExam2013/Solutions" />
       <excludeFolder url="file://$MODULE_DIR$/OldExam2013/Templates" />
       <excludeFolder url="file://$MODULE_DIR$/OldExam2013_V2/Solutions" />
@@ -37,6 +38,7 @@
       <excludeFolder url="file://$MODULE_DIR$/OldExam2018/Templates" />
       <excludeFolder url="file://$MODULE_DIR$/OldExam2019/Solutions" />
       <excludeFolder url="file://$MODULE_DIR$/OldExam2019/Templates" />
+      <excludeFolder url="file://$MODULE_DIR$/OldExam2019V2/Templates" />
       <excludeFolder url="file://$MODULE_DIR$/Programming Exam Tools" />
     </content>
     <orderEntry type="inheritedJdk" />
