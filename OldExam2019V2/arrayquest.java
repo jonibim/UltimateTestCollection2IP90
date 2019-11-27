@@ -48,7 +48,7 @@ class ArrayQuest {
                 index = i;
             }
         }
-        return index; //change this
+        return index; 
     }
 
     String sort(String s) {
